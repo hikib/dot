@@ -1,0 +1,200 @@
+{
+    // EDITOR
+    "editor.accessibilitySupport": "off",
+    "editor.codeLens": true,
+    "editor.colorDecorators": true,
+    "editor.folding": true,
+    "editor.fontSize": 17,
+    "editor.showFoldingControls": "mouseover",
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 80,
+    "editor.lineNumbers": "relative",
+
+    // WORKBENCH
+    "window.menuBarVisibility": "hidden",
+    "window.zoomLevel": 0,
+    "extensions.ignoreRecommendations": true,
+    "breadcrumbs.enabled": false,
+    "workbench.editor.labelFormat": "medium",
+    "workbench.editor.tabCloseButton": "off",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.sideBar.location": "right",
+    "workbench.statusBar.visible": true,
+    "workbench.tips.enabled": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.activityBar.visible": true,
+    "workbench.editor.showTabs": false,
+    "workbench.editor.highlightModifiedTabs": false,
+    "workbench.editor.showIcons": false,
+    "workbench.colorTheme": "Ayu Mirage",
+    "workbench.iconTheme": "ayu",
+
+    // STATS AND TELEMETRY
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    // FILES
+    "files.autoSave": "onFocusChange",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/__pycache__": true,
+        "**/.cache": true,
+        "**/.idea": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/.venv": true,
+        "**/.coverage": true,
+        "**/*.py[co]": true,
+  },
+
+    // TERMINAL
+    "terminal.integrated.shell.windows": "cmd.exe",
+    "terminal.integrated.shellArgs.windows": ["/k", "%CMDER_ROOT%\\vendor\\init.bat"],
+
+    // VIM
+    "vim.useSystemClipboard": true,
+    "vim.easymotion": true,
+    "vim.hlsearch": true,
+    "vim.autoindent": true,
+    "vim.ignorecase": true,
+    "vim.leader": "<space>",
+    "vim.replaceWithRegister": true,
+
+    //Python
+    "python.linting.enabled": true,
+    "python.linting.pycodestyleEnabled": true,
+    "python.linting.pycodestyleArgs": ["--ignore=E402"],
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "editor.detectIndentation": false,
+    "python.showStartPage": false,
+    "python.formatting.provider": "none",
+    //"python.pythonPath": "%PYTHONPATH%/python.exe",
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python3",
+    "python.terminal.activateEnvironment": true,
+    "python.workspaceSymbols.enabled": false,
+
+    // GIT
+    "git.autofetch": false,
+    "git.enableSmartCommit": true,
+    "git.enabled": true,
+    "git.path": "%CMDER_ROOT%\\vendor\\git-for-windows\\cmd\\git.exe",
+    "git.showInlineOpenFileAction": false,
+    "git.autorefresh": true,
+    "git.decorations.enabled": true,
+    
+    // MARKDOWN
+    "[markdown]": {"editor.quickSuggestions": true},
+    "markdown-pdf.emoji": false,
+    "markdown-pdf.highlightStyle": "atelier-forest-dark.css",
+    "markdown-pdf.displayHeaderFooter": false,
+
+    // LATEX
+    "latex-workshop.latex.outDir": "%DIR%/output/",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2tex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+            ],
+            "env": {}
+        },
+        {
+            "name": "jnw2texmintex",
+            "command": "julia",
+            "args": [
+                "-e",
+                "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+            ],
+            "env": {}
+        }
+    ],
+
+    // SPELLING
+    "dictCompletion.programmingLanguage": false,
+    "dictCompletion.addSpaceAfterCompletion": true,
+    "dictCompletion.leastNumOfChars": 0,
+    "dictCompletion.useExternalUserDictFile": true,
+    "dictCompletion.userDictionary": [],
+    "dictCompletion.externalUserDictFiles": ["%DANSK%/Danish.dic"],
+    "ltex.language": "da-DK",
+    "ltex.workspaceFolderDictionary": {
+        "da-DK": [
+            "bygningskonstruktøruddannelse"
+        ]
+    },
+    "spellright.ignoreFiles": [
+        "preamble.tex",
+        "**/.gitignore",
+        "**/.spellignore",
+        "**/.py"
+    ],
+    }
