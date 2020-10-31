@@ -1,13 +1,18 @@
-# my dotfiles
+# My dotfiles
+This is a collection of my configuration files.
+I use it to have my personalised settings on any machine I work at.
+
+```Automatic installation planned```
 
 ## Contents
 
-- vim settings. See [.vimrc](https://github.com/hikmet-kibar/.dotfiles/.vimrc), and [.vim](https://github.com/hikmet-kibar/.dotfiles/.vim)
-- bash settings. See [.bashrc](https://github.com/hikmet-kibar/.dotfiles/.bashrc), [.bash_profile](https://github.com/hikmet-kibar/.dotfiles/.bash_profile), and [.bash_aliases](https://github.com/hikmet-kibar/.dotfiles/.bash_aliases)
-- vscode settings. (work in progress)
+- vim settings. See [.vimrc](https://github.com/hikmet-kibar/.dotfiles/blob/master/.vimrc), and [.vim](https://github.com/hikmet-kibar/.dotfiles/tree/master/.vim)
+- bash settings. See [.bashrc](https://github.com/hikmet-kibar/.dotfiles/blob/master/.bashrc)
+- vscode settings. See [vscode](https://github.com/hikmet-kibar/.dotfiles/tree/master/vscode)
 
 ## Installation
 
-Create symbolic links to files. `ln -nsv` on linux, `mklink` on windows.
-*Automatic installation planned*
-
+- Create symbolic links to files. `ln -nsv` or `mklink`.
+- vscode:
+  - symbolic link of settings.json 
+  - install_extensions.sh

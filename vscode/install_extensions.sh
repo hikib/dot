@@ -1,5 +1,5 @@
 code --install-extension yzhang.dictionary-completion
-code --install-extension teabyii.ayu
+code --install-extension arcticicestudio.nord-visual-studio-code
 code --install-extensionms-azuretools.vscode-docker
 code --install-extension james-yu.latex-workshop
 code --install-extension yzane.markdown-pdf

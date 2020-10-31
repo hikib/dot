@@ -27,8 +27,7 @@
     "workbench.editor.showTabs": false,
     "workbench.editor.highlightModifiedTabs": false,
     "workbench.editor.showIcons": false,
-    "workbench.colorTheme": "Ayu Mirage",
-    "workbench.iconTheme": "ayu",
+    "workbench.colorTheme": "Nord",
 
     // STATS AND TELEMETRY
     "telemetry.enableCrashReporter": false,
@@ -70,8 +69,8 @@
     "editor.detectIndentation": false,
     "python.showStartPage": false,
     "python.formatting.provider": "none",
-    //"python.pythonPath": "%PYTHONPATH%/python.exe",
-    "python.pythonPath": "${workspaceFolder}/.venv/bin/python3",
+    "python.pythonPath": "%PYTHONPATH%/python.exe",
+    //"python.pythonPath": "${workspaceFolder}/.venv/bin/python3",
     "python.terminal.activateEnvironment": true,
     "python.workspaceSymbols.enabled": false,
 
