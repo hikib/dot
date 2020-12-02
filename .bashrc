@@ -19,3 +19,9 @@ export PATH
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# load bashrc for WSL
+if [ -f ~/.bash_wsl ]; then
+    . ~/.bash_wsl
+fi
+

@@ -1,0 +1,97 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "Ubuntu",
+    "alwaysShowTabs": false,
+    "tabWidthMode": "compact",
+    "startOnUserLogin": true,
+    "launchMode": "maximized",
+    "copyOnSelect": true,
+
+    "profiles":
+    {
+        "defaults":
+        {
+            // Put settings here that you want to apply to all profiles
+        },
+        "list":
+        [
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl",
+                "hidden": false,
+                "startingDirectory": "E:\\dev-repos-my",
+                "fontFace": "Cousine",
+                "fontSize": 14,
+                "padding": "15, 9, 15, 9",
+                "cursorShape": "filledBox",
+                "colorScheme": "nord",
+                
+            },
+            {
+                // Make changes here to the powershell.exe profile
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "hidden": false,
+            },
+            {
+                // Make changes here to the cmd.exe profile
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "cmd",
+                "commandline": "cmd.exe",
+                "hidden": false,
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure",
+                "hidden": true,
+            }
+        ]
+    },
+
+    // Add custom color schemes to this array
+    "schemes": [
+        {
+            "name": "nord",
+            //"cursorColor": "#FFFFFF",
+            //"selectionBackground": "#FFFFFF",
+            "background": "#2e3440",
+            "foreground": "#d8dee9",
+
+            "black": "#3b4252",
+            "red": "#000000",
+            "green": "#74aa04",
+            "yellow": "#ebcb8b",
+            "blue": "#4a88be",
+            "purple": "#b48ead",
+            "cyan": "#88c0d0",
+            "white": "#e5e9f0",
+            "brightBlack": "#4c566a",
+            "brightRed": "#bf616a",
+            "brightGreen": "#a3be8c",
+            "brightYellow": "#ebcb8b",
+            "brightBlue": "#81a1c1",
+            "brightPurple": "#b48ead",
+            "brightCyan": "#8fbcbb",
+            "brightWhite": "#eceff4",
+
+        }
+    ],
+
+    // Add any keybinding overrides to this array.
+    // To unbind a default keybinding, set the command to "unbound"
+    "keybindings": [
+        {"command": "newTab",
+        "keys":["ctrl+t"]},
+        {"command":"nextTab",
+        "keys":["ctrl+tab"]},
+        {"command":"prevTab",
+        "keys":["ctrl+shift+tab"]}
+    ]
+}

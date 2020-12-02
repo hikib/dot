@@ -2,7 +2,6 @@ set number
 set relativenumber
 set textwidth=79
 set formatoptions-=c formatoptions-=o formatoptions-=r
-au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 set encoding=utf-8
 
 " indentation
