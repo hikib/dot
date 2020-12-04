@@ -26,6 +26,17 @@ let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
+" Autocomplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+Plug 'deoplete-plugins/deoplete-jedi'
+
 " Git
 Plug 'tpope/vim-fugitive'
 
@@ -72,18 +83,16 @@ augroup MY_AUTOCMDS
     autocmd BufWritePre * :call TrimWhitespace()
     autocmd BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
     autocmd VimEnter *.wiki Goyo
-    autocmd VimLeave *.wiki Goyo
+    autocmd VimLeavePre *.tex VimtexClean
 augroup END
 
 """"""""""""
 " Remapping
 """"""""""""
 
-let mapleader = " "
+"let mapleader = ','
 map <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader>a :echo "it works"<CR>
-"autocmd BufWritePost *.tex VimtexClean
-
 
 " Switch windows quick
 nnoremap <C-J> <C-W>j
@@ -92,9 +101,14 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 
 " Yanking
+" note: not on WSL
 nnoremap <Leader>y "+y
 vnoremap <Leader>y "+y
 nnoremap <Leader>Y gg"+yG
+
+" Cycle buffers
+nnoremap <silent> <Tab> :bn<CR>
+nnoremap <silent> <S-Tab> :bp<CR>
 
 " Autocorrect spelling if spell is on
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u

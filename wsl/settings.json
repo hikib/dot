@@ -1,5 +1,4 @@
 
-// To view the default settings, hold "alt" while clicking on the "Settings" button.
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 
 {
@@ -26,11 +25,11 @@
                 "hidden": false,
                 "startingDirectory": "E:\\dev-repos-my",
                 "fontFace": "Cousine",
-                "fontSize": 14,
+                "fontSize": 12,
                 "padding": "15, 9, 15, 9",
                 "cursorShape": "filledBox",
                 "colorScheme": "nord",
-                
+
             },
             {
                 // Make changes here to the powershell.exe profile
