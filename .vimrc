@@ -8,6 +8,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  echo "Don't forget to :GoInstallBinaries if you're doing Go dev."
 endif
 
 " Navigation
@@ -16,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 
 " Flying
 Plug 'tpope/vim-commentary' "gc
+Plug 'tpope/vim-surround' "cs or ys
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -29,6 +31,11 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -65,6 +72,7 @@ set nobackup            " more risky, but cleaner
 set noswapfile
 set nowritebackup
 set nofixendofline      " prevent silent fixing by vim
+set incsearch           " highlight search while typing
 
 " statusline
 set noruler
@@ -116,7 +124,6 @@ hi Conceal ctermbg=none
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Functions                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -130,6 +137,38 @@ fun ExecuteVimCommand()
   execute l:Command
 endfun
 
+fun! DuckDuckGo()
+  let keyword = expand("<cword>")
+  let url = "http:/duckduckgo.com/?q=" . keyword
+  let path = "/mnt/c/Program Files/Mozilla Firefox/"
+  exec 'silent !"' . path . 'firefox.exe" ' . url
+  exec "redraw!"
+endfun
+
+fun! Ordbog()
+  let keyword = expand("<cword>")
+  let url = "https://ordnet.dk/ddo/ordbog?query=" . keyword
+  let path = "/mnt/c/Program Files/Mozilla Firefox/"
+  exec 'silent !"' . path . 'firefox.exe" ' . url
+  exec "redraw!"
+endfun
+
+fun! KorpusDK()
+  let keyword = expand("<cword>")
+  let url = "https://ordnet.dk/korpusdk/quick_search?SearchableText=" . keyword
+  let path = "/mnt/c/Program Files/Mozilla Firefox/"
+  exec 'silent !"' . path . 'firefox.exe" ' . url
+  exec "redraw!"
+endfun
+
+fun! Langenscheidt()
+  let keyword = expand("<cword>")
+  let url = "https://de.langenscheidt.com/daenisch-deutsch/" . keyword
+  let path = "/mnt/c/Program Files/Mozilla Firefox/"
+  exec 'silent !"' . path . 'firefox.exe" ' . url
+  exec "redraw!"
+endfun
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Autocommands                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -138,6 +177,7 @@ augroup MY_AUTOCMDS
   autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd VimLeavePre *.tex VimtexClean
+  autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4
 augroup END
 
 augroup REMEMBER_FOLDS
@@ -150,21 +190,29 @@ augroup END
 "                               Mappings                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let mapleader = ' '
 nnoremap <F1> :call ExecuteVimCommand()<CR>
 nnoremap <F2> :Goyo<CR>
-let mapleader = ' '
 
+" Stay in visual mode
 vmap < <gv
 vmap > >gv
+
+" Searching the web
+au FileType markdown nmap <leader>d :call DuckDuckGo()<CR>
+au FileType markdown nmap <leader>o :call Ordbog()<CR>
+au FileType markdown nmap <leader>k :call KorpusDK()<CR>
+au FileType markdown nmap <leader>t :call Langenscheidt()<CR>
 
 " Better page down and page up
 noremap <C-j> <C-d>
 noremap <C-k> <C-b>
 
 " fzf
-nnoremap <C-n> :Files<Cr>
-nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-f> :Files<Cr>
+nnoremap <C-g> :GFiles<Cr>
 nnoremap <C-b> :Buffers<CR>
+nnoremap <C-l> :Lines<CR>
 
 " Yanking
 map Y y$

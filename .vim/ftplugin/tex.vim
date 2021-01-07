@@ -6,6 +6,7 @@
 setlocal spell
 set spelllang=da,en_gb
 
+
 set linebreak
 
 let g:tex_flavor='latex'
