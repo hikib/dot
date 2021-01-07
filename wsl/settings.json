@@ -1,6 +1,5 @@
 
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
-
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "defaultProfile": "Ubuntu",
@@ -25,7 +24,7 @@
                 "hidden": false,
                 "startingDirectory": "E:\\dev-repos-my",
                 "fontFace": "Cousine",
-                "fontSize": 12,
+                "fontSize": 11,
                 "padding": "15, 9, 15, 9",
                 "cursorShape": "filledBox",
                 "colorScheme": "nord",
@@ -57,20 +56,41 @@
     // Add custom color schemes to this array
     "schemes": [
         {
+            "name": "SpaceDuck",
+            "foreground": "#ecf0c1",
+            "background": "#0f111b",
+            "black": "#000000",
+            "red": "#e33400",
+            "green": "#5ccc96",
+            "yellow": "#b3a1e6",
+            "blue": "#00a3cc",
+            "purple": "#f2ce00",
+            "cyan": "#7a5ccc",
+            "white": "#686f9a",
+            "brightBlack": "#686f9a",
+            "brightRed": "#e33400",
+            "brightGreen": "#5ccc96",
+            "brightYellow": "#b3a1e6",
+            "brightBlue": "#00a3cc",
+            "brightPurple": "#f2ce00",
+            "brightCyan": "#7a5ccc",
+            "brightWhite": "#f0f1ce"
+        },
+        {
             "name": "nord",
-            //"cursorColor": "#FFFFFF",
-            //"selectionBackground": "#FFFFFF",
-            "background": "#2e3440",
-            "foreground": "#d8dee9",
+            // "cursorColor": "#FFFFFF",
+            // "selectionBackground": "#FFFFFF",
+            "background": "#2E3440",
+            "foreground": "#E5E9F0",
 
-            "black": "#3b4252",
-            "red": "#000000",
-            "green": "#74aa04",
+            "black": "#3B4252",
+            "blue": "#81A1C1",
+            "cyan": "#88C0D0",
+            "green": "#8FBCBB",
+            "purple": "#B48EAD",
+            "red": "#BF616A",
+            "white": "#E5E9F0",
             "yellow": "#ebcb8b",
-            "blue": "#4a88be",
-            "purple": "#b48ead",
-            "cyan": "#88c0d0",
-            "white": "#e5e9f0",
             "brightBlack": "#4c566a",
             "brightRed": "#bf616a",
             "brightGreen": "#a3be8c",
