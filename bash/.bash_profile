@@ -16,7 +16,7 @@ export MYREPOS="/mnt/e/dev-repos-my/"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 
-export FZF_DEFAULT_COMMAND="find * -type f -not -path '*/\.git/*'"
+export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*'"
 
 export SCRIPTS=$MYREPOS/scripts/bin
 export PATH=$PATH:$GOBIN:$SCRIPTS
