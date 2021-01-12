@@ -1,10 +1,8 @@
 # Settings for WSL
 
-To create a symlink from WSL to Windows, run `mklink` from `cmd` as
-admin:
-
-```
-mklink path\on\windows\settings.json \\wsl$\Ubuntu\...\.dotfiles\dev\wsl\settings.json
-```
-
+## Installation
+Run `setup.bat` as admin:
+* renames existing `settings.json` in the WSL settings directory to
+  `settings.json.backup`
+* Creates a symlink of `settings.json` to the WSL settings directory.
 

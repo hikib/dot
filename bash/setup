@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+THISDIR=$(dirname $(readlink -f $0))
+
+ln -svf $THISDIR/.bashrc $HOME/.bashrc
+ln -svf $THISDIR/.bash_profile $HOME/.bash_profile
+ln -svf $THISDIR/.bash_aliases $HOME/.bash_aliases
+ln -svf $THISDIR/.bash_wsl $HOME/.bash_wsl
+
+ln -svf $THISDIR/.dir_colors $HOME/.dir_colors
+eval $(dircolors $HOME/.dir_colors)
+

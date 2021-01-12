@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+THISDIR=$(dirname $(readlink -f $0))
+
+ln -svf $THISDIR/.vim/autoload/plug.vim $HOME/.vim/autoload/plug.vim
+
+ln -svf $THISDIR/.vimrc $HOME/.vimrc
+ln -svf $THISDIR/.vim/UltiSnips $HOME/.vim/
+ln -svf $THISDIR/.vim/ftplugin $HOME/.vim/
+ln -svf $THISDIR/.vim/spell $HOME/.vim/
+
