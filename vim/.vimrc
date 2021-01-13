@@ -112,8 +112,16 @@ set wildignorecase
 """""""""""""
 let g:vimwiki_table_mappings = 0 " UltiSnips <tab>
 let g:vimwiki_auto_header = 1
+let g:vimwiki_listsyms = ' .oOX'
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_dir_link = 'README'
 let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'index': 'README',
+                      \ 'diary_index': 'README',
+                      \ 'diary_header': 'Journal',
+                      \ 'auto_toc': 0,
                       \ 'auto_diary_index': 1,
+                      \ 'links_space_char': '-',
                       \ 'syntax': 'markdown',
                       \ 'ext': '.md'}]
 
