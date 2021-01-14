@@ -1,2 +1,2 @@
 *.swp
-*/ftplugin/go/
+./ftplugin/go/*
