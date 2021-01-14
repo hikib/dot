@@ -11,42 +11,31 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   echo "Don't forget to :GoInstallBinaries if you're doing Go dev."
 endif
 
-""""""""""""""""
-"  navigation  "
-""""""""""""""""
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
 """"""""""""
 "  flying  "
 """"""""""""
-Plug 'tpope/vim-commentary' "gc
-Plug 'tpope/vim-surround' "cs or ys
-Plug 'tpope/vim-fugitive'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-"""""""""""""""""""""""""""""""""
-"  autocomplete / intellisense  "
-"""""""""""""""""""""""""""""""""
-Plug 'sheerun/vim-polyglot'
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'tpope/vim-commentary'
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'deoplete-plugins/deoplete-jedi' " python
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
+""""""""""""
+"  coding  "
+""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'sheerun/vim-polyglot'
 
 """""""""""""
 "  writing  "
 """""""""""""
-Plug 'lervag/vimtex'
-Plug 'junegunn/goyo.vim'
+Plug 'lervag/vimtex'  " TODO: Use pandoc instead
 Plug 'vimwiki/vimwiki'
 
 """"""""""
@@ -57,7 +46,7 @@ Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Settings                               "
+"                               settings                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""
@@ -72,6 +61,7 @@ set norelativenumber
 set nocompatible
 set icon
 set showmode
+set showmatch
 set autowrite           " autosave when changing
 set hidden              " when switching buffers
 set cmdheight=1         " avoid HitEnter prompts
@@ -110,8 +100,7 @@ set wildignorecase
 """""""""""""
 "  vimwiki  "
 """""""""""""
-let g:vimwiki_table_mappings = 0 " UltiSnips <tab>
-let g:vimwiki_auto_header = 1
+let g:vimwiki_auto_header = 0
 let g:vimwiki_listsyms = ' .oOX'
 let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_dir_link = 'README'
@@ -131,14 +120,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 autocmd CompleteDone * silent! pclose!
 let g:deoplete#enable_at_startup = 1
 
-"""""""""""""""
-"  ultisnips  "
-"""""""""""""""
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
 """"""""""""
 "  colors  "
 """"""""""""
@@ -151,7 +132,7 @@ colorscheme nord
 hi Conceal ctermbg=none
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              Functions                               "
+"                              functions                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 fun! TrimWhitespace()
   let l:save = winsaveview()
@@ -175,30 +156,23 @@ fun! SearchByPage(url)
 endfun
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Autocommands                             "
+"                             autocommands                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup MY_AUTOCMDS
   autocmd BufNewFile,BufRead *.md set filetype=markdown
-  autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :silent 0r !journaling '%'
+  autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling
+  autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d :.!reviews
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd VimLeavePre *.tex VimtexClean
-  autocmd Filetype go setlocal tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
-
-augroup REMEMBER_FOLDS
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent! loadview
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Mappings                               "
+"                               mappings                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ' '
 nnoremap <F1> :call ExecuteVimCommand()<CR>
-nnoremap <F2> :Goyo<CR>
 
 " Stay in visual mode
 vmap < <gv
@@ -227,7 +201,4 @@ map Y y$
 " nnoremap <Leader>y "+y
 " vnoremap <Leader>y "+y
 " nnoremap <Leader>Y gg"+yG
-
-" Autocorrect spelling if spell is on
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 

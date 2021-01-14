@@ -1,5 +1,5 @@
 setlocal spell
-set spelllang=da,en_gb
-set conceallevel=2
+setlocal spelllang=da,en_gb
+setlocal conceallevel=2
 
 
