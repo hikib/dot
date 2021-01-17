@@ -161,6 +161,13 @@ augroup MY_AUTOCMDS
   autocmd VimLeavePre *.tex VimtexClean
 augroup END
 
+" Vim does not load bash_aliases. This is one workaround.
+fun! SearchWeb(page)
+  let keyword = expand("<cword>")
+  exec "silent !searchweb -page=" . a:page . " " . keyword
+  exec "redraw!"
+endfun
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               mappings                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,6 +186,11 @@ vmap > >gv
 " Better page down and page up
 noremap <C-j> <C-d>
 noremap <C-k> <C-b>
+
+noremap <leader>d :call SearchWeb("duck") <CR>
+noremap <leader>o :call SearchWeb("ordnet") <CR>
+noremap <leader>k :call SearchWeb("korpus") <CR>
+noremap <leader>t :call SearchWeb("tysk") <CR>
 
 " fzf
 nnoremap <C-f> :Files<CR>
