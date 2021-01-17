@@ -1,2 +1,2 @@
 *.swp
-.vim/ftplugin/go/**
+vim/.vim/ftplugin/go/**

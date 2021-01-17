@@ -62,6 +62,7 @@ set nocompatible
 set icon
 set showmode
 set showmatch
+set history=100
 set autowrite           " autosave when changing
 set hidden              " when switching buffers
 set cmdheight=1         " avoid HitEnter prompts
@@ -69,8 +70,10 @@ set shortmess=aoOtIF    " avoid HitEnter prompts
 set nobackup            " more risky, but cleaner
 set noswapfile
 set nowritebackup
+set ttyfast             " faster scrolling
 set nofixendofline      " prevent silent fixing by vim
 set incsearch           " highlight search while typing
+set hlsearch
 
 """"""""""""""""
 "  statusline  "
@@ -91,10 +94,10 @@ set shiftwidth=2
 set smarttab
 set smartindent
 set autoindent
-set expandtab " replace tabs with spaces
+set expandtab       " replace tabs with spaces
 set softtabstop=2
 set textwidth=72
-set wildmenu " Better command search
+set wildmenu        " Better command search
 set wildignorecase
 
 """""""""""""
@@ -132,8 +135,9 @@ colorscheme nord
 hi Conceal ctermbg=none
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                              functions                               "
+"                        functions & autocommands                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -148,21 +152,11 @@ fun ExecuteVimCommand()
   execute l:Command
 endfun
 
-fun! SearchByPage(url)
-  let keyword = expand("<cword>")
-  let path = "/mnt/c/Program Files/Mozilla Firefox/"
-  exec 'silent !"' . path . 'firefox.exe" ' . a:url . keyword
-  exec "redraw!"
-endfun
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             autocommands                             "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 augroup MY_AUTOCMDS
   autocmd BufNewFile,BufRead *.md set filetype=markdown
-  autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling
-  autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d :.!reviews
+  autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
+  autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling %
+  autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d | .!reviews %
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd VimLeavePre *.tex VimtexClean
 augroup END
@@ -172,33 +166,23 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ' '
+map <silent> <leader><cr> :noh<cr>:redraw!<cr>
 nnoremap <F1> :call ExecuteVimCommand()<CR>
+
+" yank like D or C
+map Y y$
 
 " Stay in visual mode
 vmap < <gv
 vmap > >gv
-
-" Searching the web
-nmap <leader>d :call SearchByPage("http:/duckduckgo.com/?q=")<CR>
-nmap <leader>y :call SearchByPage("https://www.youtube.com/results?search_query=")<CR>
-nmap <leader>o :call SearchByPage("https://ordnet.dk/ddo/ordbog?query=")<CR>
-nmap <leader>k :call SearchByPage("https://ordnet.dk/korpusdk/quick_search?SearchableText=")<CR>
-nmap <leader>t :call SearchByPage("https://de.langenscheidt.com/daenisch-deutsch/")<CR>
 
 " Better page down and page up
 noremap <C-j> <C-d>
 noremap <C-k> <C-b>
 
 " fzf
-nnoremap <C-f> :Files<Cr>
-nnoremap <C-g> :GFiles<Cr>
+nnoremap <C-f> :Files<CR>
+nnoremap <C-g> :GFiles<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-l> :Lines<CR>
-
-" Yanking
-map Y y$
-" note: following not on WSL bash
-" nnoremap <Leader>y "+y
-" vnoremap <Leader>y "+y
-" nnoremap <Leader>Y gg"+yG
 
