@@ -164,7 +164,8 @@ augroup END
 " Vim does not load bash_aliases. This is one workaround.
 fun! SearchWeb(page)
   let keyword = expand("<cword>")
-  exec "silent !searchweb -page=" . a:page . " " . keyword
+  let search = "!searchweb -page=" . a:page . " -config=" . $SEARCHYAML
+  exec "silent " . search . " " . keyword
   exec "redraw!"
 endfun
 

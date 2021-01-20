@@ -1,7 +1,7 @@
 # .bashrc
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
+if [[ -f /etc/bashrc ]]; then
 	. /etc/bashrc
 fi
 
@@ -14,14 +14,3 @@ export PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
-
-# User specific aliases and functions
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# load bashrc for WSL
-if [ -f ~/.bash_wsl ]; then
-    . ~/.bash_wsl
-fi
-
