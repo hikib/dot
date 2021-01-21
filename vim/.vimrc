@@ -8,39 +8,22 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  echo "Don't forget to :GoInstallBinaries if you're doing Go dev."
+  echom "Don't forget to :GoInstallBinaries if you're doing Go dev."
 endif
 
-""""""""""""
-"  flying  "
-""""""""""""
+" flying
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
 Plug 'tpope/vim-commentary'
+Plug 'vimwiki/vimwiki'
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'deoplete-plugins/deoplete-jedi' " python
-Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-
-""""""""""""
-"  coding  "
-""""""""""""
+" go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'sheerun/vim-polyglot'
 
-"""""""""""""
-"  writing  "
-"""""""""""""
+" misc
 Plug 'lervag/vimtex'  " TODO: Use pandoc instead
-Plug 'vimwiki/vimwiki'
-
-""""""""""
-"  misc  "
-""""""""""
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -49,9 +32,6 @@ call plug#end()
 "                               settings                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""
-"  general  "
-"""""""""""""
 syntax on
 filetype on
 filetype plugin on
@@ -75,9 +55,6 @@ set nofixendofline      " prevent silent fixing by vim
 set incsearch           " highlight search while typing
 set hlsearch
 
-""""""""""""""""
-"  statusline  "
-""""""""""""""""
 set noruler
 set laststatus=2
 set statusline=
@@ -86,9 +63,6 @@ set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=%*\ %l:%c%*                   " current line and column
 set statusline+=%*\ %p%%%*                    " percentage
 
-""""""""""""
-"  spaces  "
-""""""""""""
 set tabstop=2
 set shiftwidth=2
 set smarttab
@@ -100,9 +74,6 @@ set textwidth=72
 set wildmenu        " Better command search
 set wildignorecase
 
-"""""""""""""
-"  vimwiki  "
-"""""""""""""
 let g:vimwiki_auto_header = 0
 let g:vimwiki_listsyms = ' .oOX'
 let g:vimwiki_markdown_link_ext = 1
@@ -117,15 +88,7 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown',
                       \ 'ext': '.md'}]
 
-""""""""""""""
-"  deoplete  "
-""""""""""""""
-autocmd CompleteDone * silent! pclose!
-let g:deoplete#enable_at_startup = 1
 
-""""""""""""
-"  colors  "
-""""""""""""
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -153,6 +116,7 @@ fun ExecuteVimCommand()
 endfun
 
 augroup MY_AUTOCMDS
+  autocmd CompleteDone * silent! pclose!
   autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
   autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling %
@@ -163,9 +127,9 @@ augroup END
 
 " Vim does not load bash_aliases. This is one workaround.
 fun! SearchWeb(page)
-  let keyword = expand("<cword>")
+  let keyword = expand(" <cword>")
   let search = "!searchweb -page=" . a:page . " -config=" . $SEARCHYAML
-  exec "silent " . search . " " . keyword
+  exec "silent " . search . keyword
   exec "redraw!"
 endfun
 
@@ -174,24 +138,25 @@ endfun
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ' '
-map <silent> <leader><cr> :noh<cr>:redraw!<cr>
+nnoremap <silent> <leader><cr> :noh<cr>:redraw!<cr>
 nnoremap <F1> :call ExecuteVimCommand()<CR>
 
 " yank like D or C
-map Y y$
+noremap Y y$
 
 " Stay in visual mode
-vmap < <gv
-vmap > >gv
+vnoremap < <gv
+vnoremap > >gv
 
 " Better page down and page up
 noremap <C-j> <C-d>
 noremap <C-k> <C-b>
 
-noremap <leader>d :call SearchWeb("duck") <CR>
-noremap <leader>o :call SearchWeb("ordnet") <CR>
-noremap <leader>k :call SearchWeb("korpus") <CR>
-noremap <leader>t :call SearchWeb("tysk") <CR>
+" Search word under cursor
+nnoremap <leader>d :call SearchWeb("duck") <CR>
+nnoremap <leader>o :call SearchWeb("ordnet") <CR>
+nnoremap <leader>k :call SearchWeb("korpus") <CR>
+nnoremap <leader>t :call SearchWeb("tysk") <CR>
 
 " fzf
 nnoremap <C-f> :Files<CR>

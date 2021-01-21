@@ -6,12 +6,13 @@ alias \
 
 
 alias \
-  ?="searchweb -page=duck -config=${SEARCHYAML}"         \
-  ord="searchweb -page=ordnet -config=${SEARCHYAML}"     \
-  korp="searchweb -page=korpus -config=${SEARCHYAML}"    \
-  tysk="searchweb -page=tysk -config=${SEARCHYAML}"      \
-  yt="searchweb -page=youtube -config=${SEARCHYAML}"     \
-  github="searchweb -page=github -config=${SEARCHYAML}"
+  ?="searchweb -page=duck -config=${SEARCHYAML} "         \
+  ord="searchweb -page=ordnet -config=${SEARCHYAML} "     \
+  korp="searchweb -page=korpus -config=${SEARCHYAML} "    \
+  tysk="searchweb -page=tysk -config=${SEARCHYAML} "      \
+  yt="searchweb -page=youtube -config=${SEARCHYAML} "     \
+  github="searchweb -page=github -config=${SEARCHYAML} "  \
+  twitch="searchweb -page=twitch -config=${SEARCHYAML} "
 
 
 alias \
