@@ -107,31 +107,16 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 
-fun ExecuteVimCommand()
-  " Executes a command on line
-  " eg:
-  " :VimwikiSearchTags todo
-  let l:Command = getline('.')
-  execute l:Command
-endfun
-
 augroup MY_AUTOCMDS
-  autocmd CompleteDone * silent! pclose!
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
-  autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
   autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling %
   autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d | .!reviews %
-  autocmd BufWritePre * :call TrimWhitespace()
-  autocmd VimLeavePre *.tex VimtexClean
-augroup END
 
-" Vim does not load bash_aliases. This is one workaround.
-fun! SearchWeb(page)
-  let keyword = expand(" <cword>")
-  let search = "!searchweb -page=" . a:page . " -config=" . $SEARCHYAML
-  exec "silent " . search . keyword
-  exec "redraw!"
-endfun
+  autocmd BufNewFile,BufRead *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
+
+  autocmd BufWritePre * :call TrimWhitespace()
+  autocmd CompleteDone * silent! pclose!
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               mappings                               "
@@ -139,7 +124,6 @@ endfun
 
 let mapleader = ' '
 nnoremap <silent> <leader><cr> :noh<cr>:redraw!<cr>
-nnoremap <F1> :call ExecuteVimCommand()<CR>
 
 " yank like D or C
 noremap Y y$
@@ -153,10 +137,16 @@ noremap <C-j> <C-d>
 noremap <C-k> <C-b>
 
 " Search word under cursor
-nnoremap <leader>d :call SearchWeb("duck") <CR>
-nnoremap <leader>o :call SearchWeb("ordnet") <CR>
-nnoremap <leader>k :call SearchWeb("korpus") <CR>
-nnoremap <leader>t :call SearchWeb("tysk") <CR>
+" Based on Go cli command at
+" https://github.com/hikmet-kibar/scripts/cmd/searchweb
+nnoremap <silent> <leader>d :exec "!searchweb -page=duck -config=${PAGES} "
+                              \ . expand("<cword>")<cr> :redraw!<cr>
+nnoremap <silent> <leader>o :exec "!searchweb -page=ordnet -config=${PAGES} "
+                              \ . expand("<cword>")<cr> :redraw!<cr>
+nnoremap <silent> <leader>k :exec "!searchweb -page=korpus -config=${PAGES} "
+                              \ . expand("<cword>")<cr> :redraw!<cr>
+nnoremap <silent> <leader>t :exec "!searchweb -page=tysk -config=${PAGES} "
+                              \ . expand("<cword>")<cr> :redraw!<cr>
 
 " fzf
 nnoremap <C-f> :Files<CR>
