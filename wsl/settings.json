@@ -3,11 +3,16 @@
 {
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "defaultProfile": "Ubuntu",
-    "alwaysShowTabs": false,
-    "tabWidthMode": "compact",
     "startOnUserLogin": true,
     "launchMode": "maximized",
     "copyOnSelect": true,
+    "disabledProfileSources": [],
+    "theme": "dark",
+
+    "tabWidthMode": "compact",
+    "alwaysShowTabs": false,
+    "showTabsInTitlebar": false,
+
 
     "profiles":
     {
@@ -103,15 +108,4 @@
 
         }
     ],
-
-    // Add any keybinding overrides to this array.
-    // To unbind a default keybinding, set the command to "unbound"
-    "keybindings": [
-        {"command": "newTab",
-        "keys":["ctrl+t"]},
-        {"command":"nextTab",
-        "keys":["ctrl+tab"]},
-        {"command":"prevTab",
-        "keys":["ctrl+shift+tab"]}
-    ]
 }

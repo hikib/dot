@@ -11,6 +11,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   echom "Don't forget to :GoInstallBinaries if you're doing Go dev."
 endif
 
+if !has("gui_running")
+  set term=xterm
+endif
+
 " flying
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -54,6 +58,7 @@ set ttyfast             " faster scrolling
 set nofixendofline      " prevent silent fixing by vim
 set incsearch           " highlight search while typing
 set hlsearch
+set ignorecase
 
 set noruler
 set laststatus=2
@@ -63,6 +68,8 @@ set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=%*\ %l:%c%*                   " current line and column
 set statusline+=%*\ %p%%%*                    " percentage
 
+set textwidth=72
+set linebreak
 set tabstop=2
 set shiftwidth=2
 set smarttab
@@ -70,7 +77,6 @@ set smartindent
 set autoindent
 set expandtab       " replace tabs with spaces
 set softtabstop=2
-set textwidth=72
 set wildmenu        " Better command search
 set wildignorecase
 
@@ -100,6 +106,12 @@ hi Conceal ctermbg=none
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        functions & autocommands                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim background fix in tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 fun! TrimWhitespace()
   let l:save = winsaveview()
@@ -123,7 +135,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = ' '
-nnoremap <silent> <leader><cr> :noh<cr>:redraw!<cr>
+nnoremap <silent> <leader><CR> :noh<CR>:redraw!<CR>
 
 " yank like D or C
 noremap Y y$
@@ -137,20 +149,16 @@ noremap <C-j> <C-d>
 noremap <C-k> <C-b>
 
 " Search word under cursor
-" Based on Go cli command at
 " https://github.com/hikmet-kibar/scripts/cmd/searchweb
-nnoremap <silent> <leader>d :exec "!searchweb -page=duck -config=${PAGES} "
-                              \ . expand("<cword>")<cr> :redraw!<cr>
-nnoremap <silent> <leader>o :exec "!searchweb -page=ordnet -config=${PAGES} "
-                              \ . expand("<cword>")<cr> :redraw!<cr>
-nnoremap <silent> <leader>k :exec "!searchweb -page=korpus -config=${PAGES} "
-                              \ . expand("<cword>")<cr> :redraw!<cr>
-nnoremap <silent> <leader>t :exec "!searchweb -page=tysk -config=${PAGES} "
-                              \ . expand("<cword>")<cr> :redraw!<cr>
+nnoremap <silent> <leader>d :exec "!searchweb -page=duck "
+                              \ . expand("<cword>")<CR> :redraw!<CR>
+nnoremap <silent> <leader>o :exec "!searchweb -page=ordnet "
+                              \ . expand("<cword>")<CR> :redraw!<CR>
+nnoremap <silent> <leader>k :exec "!searchweb -page=korpus "
+                              \ . expand("<cword>")<CR> :redraw!<CR>
+nnoremap <silent> <leader>t :exec "!searchweb -page=tysk "
+                              \ . expand("<cword>")<CR> :redraw!<CR>
 
 " fzf
 nnoremap <C-f> :Files<CR>
-nnoremap <C-g> :GFiles<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-l> :Lines<CR>
 

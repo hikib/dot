@@ -21,6 +21,10 @@ export GOBIN=$GOPATH/bin
 export SCRIPTS=$REPOS/scripts/bin
 export PATH=$PATH:$GOBIN:$SCRIPTS
 
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
 if [[ -f ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi
