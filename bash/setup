@@ -2,11 +2,12 @@
 
 THISDIR=$(dirname $(readlink -f $0))
 
-ln -svf $THISDIR/bashrc $HOME/.bashrc
+# FIXME make bashrc compatible on wsl & linux...
+# ln -svf $THISDIR/bashrc $HOME/.bashrc
 ln -svf $THISDIR/bash_profile $HOME/.bash_profile
 ln -svf $THISDIR/bash_aliases $HOME/.bash_aliases
 ln -svf $THISDIR/bash_wsl $HOME/.bash_wsl
 
 ln -svf $THISDIR/dir_colors $HOME/.dir_colors
-eval $(dircolors $HOME/.dir_colors)
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
