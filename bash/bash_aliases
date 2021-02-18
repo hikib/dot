@@ -31,7 +31,3 @@ alias \
   rm="rm -v"                     \
   mkd="mkdir -pv"
 
-alias \
-  fvu="tmux a -t fvu"
-  # tmux="tmux -2"                 \
-
