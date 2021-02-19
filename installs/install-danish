@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sudo apt install -y `check-language-support -l da`
