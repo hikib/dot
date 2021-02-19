@@ -161,4 +161,5 @@ nnoremap <silent> <leader>t :exec "!searchweb -page=tysk "
 
 " fzf
 nnoremap <C-f> :Files<CR>
+nnoremap <C-b> :Buffers<CR>
 
