@@ -17,6 +17,7 @@ alias \
 
 alias \
   vrc="vim ~/.vimrc"            \
+  -="vim ${DASHBOARD}"            \
   brc="vim ~/.bash_profile"
 
 

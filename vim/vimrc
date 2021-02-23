@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"2"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               plugins                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
@@ -29,6 +29,7 @@ Plug 'sheerun/vim-polyglot'
 " misc
 Plug 'lervag/vimtex'  " TODO: Use pandoc instead
 Plug 'arcticicestudio/nord-vim'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -101,7 +102,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 colorscheme nord
-hi Conceal ctermbg=none
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        functions & autocommands                      "
@@ -120,6 +121,11 @@ fun! TrimWhitespace()
 endfun
 
 augroup MY_AUTOCMDS
+  " TODO:
+  " - create ftplugins for journal, reviewindex and other md files
+  "   to call your magic commands
+  " - autocmd BufNewFile, BufRead [journal regex] set filetype=journal
+  " - autocmd BufNewFile, BufRead [reviewindex regex] set filetype=reviewindex
   autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling %
   autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d | .!reviews %
 
@@ -128,6 +134,11 @@ augroup MY_AUTOCMDS
 
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd CompleteDone * silent! pclose!
+
+  " transprent background
+  autocmd VimEnter * hi Conceal guibg=NONE ctermbg=NONE
+  autocmd VimEnter * hi StatusLine guibg=NONE guifg=#EBCB8B ctermfg=#EBCB8B ctermbg=NONE
+  autocmd VimEnter * hi Normal guibg=NONE ctermbg=NONE
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

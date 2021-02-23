@@ -12,13 +12,16 @@ export PS1="\[\e[36m\W\]\[\e[33m\$(parse_git_branch)\] $\[\e[00m\] "
 # export PS1="\[\e[33m$\]\[\e[32m\$(parse_git_branch)\] \[\e[00m\]"
 
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
-# export REPOS=$HOME/repos
-export REPOS=/mnt/e/dev-repos-my
+export REPOS=$HOME/repos
+# export REPOS=/mnt/e/dev-repos-my
 export PAGES=$HOME/.config/searchweb/pages.yaml
 export GOPATH=$HOME/go
 
 export GOBIN=$GOPATH/bin
-export SCRIPTS=$REPOS/scripts/bin
+export SCRIPTS=$REPOS/github.com/hikmet-kibar/scripts/bin
 export PATH=$PATH:$GOBIN:$SCRIPTS
+export TERM="xterm-256color"
+export BASE=$HOME/vimwiki/
+export DASHBOARD=$BASE/README.md
 
 [ -r ~/.bash_aliases   ] && source ~/.bash_aliases
