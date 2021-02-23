@@ -136,9 +136,9 @@ augroup MY_AUTOCMDS
   autocmd CompleteDone * silent! pclose!
 
   " transprent background
-  autocmd VimEnter * hi Conceal guibg=NONE ctermbg=NONE
-  autocmd VimEnter * hi StatusLine guibg=NONE guifg=#EBCB8B ctermfg=#EBCB8B ctermbg=NONE
-  autocmd VimEnter * hi Normal guibg=NONE ctermbg=NONE
+  autocmd VimEnter * hi Conceal guibg=NONE
+  autocmd VimEnter * hi StatusLine guibg=NONE guifg=#EBCB8B
+  autocmd VimEnter * hi Normal guibg=NONE
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
