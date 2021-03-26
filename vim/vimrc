@@ -19,7 +19,7 @@ endif
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 
 " go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -27,7 +27,10 @@ Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symli
 Plug 'sheerun/vim-polyglot'
 
 " misc
-Plug 'lervag/vimtex'  " TODO: Use pandoc instead
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'rwxrob/vim-pandoc-syntax-simple'
+" Plug 'lervag/vimtex'  " TODO: Use pandoc instead
 Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/goyo.vim'
 
@@ -69,6 +72,7 @@ set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=%*\ %l:%c%*                   " current line and column
 set statusline+=%*\ %p%%%*                    " percentage
 
+set nofoldenable    " disable folding
 set textwidth=72
 set linebreak
 set tabstop=2
@@ -81,20 +85,23 @@ set softtabstop=2
 set wildmenu        " Better command search
 set wildignorecase
 
-let g:vimwiki_auto_header = 0
-let g:vimwiki_listsyms = ' .oOX'
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_dir_link = 'README'
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'index': 'README',
-                      \ 'diary_index': 'README',
-                      \ 'diary_header': 'Journal',
-                      \ 'auto_toc': 0,
-                      \ 'auto_diary_index': 1,
-                      \ 'links_space_char': '-',
-                      \ 'syntax': 'markdown',
-                      \ 'ext': '.md'}]
+" let g:vimwiki_auto_header = 0
+" let g:vimwiki_listsyms = ' .oOX'
+" let g:vimwiki_markdown_link_ext = 1
+" let g:vimwiki_dir_link = 'README'
+" let g:vimwiki_list = [{'path': '~/vimwiki/',
+"                       \ 'index': 'README',
+"                       \ 'diary_index': 'README',
+"                       \ 'diary_header': 'Journal',
+"                       \ 'auto_toc': 0,
+"                       \ 'auto_diary_index': 1,
+"                       \ 'links_space_char': '-',
+"                       \ 'syntax': 'markdown',
+"                       \ 'ext': '.md'}]
 
+" let g:pandoc#folding#fdc = 1
+let g:pandoc#formatting#mode = 'h' " A'
+let g:pandoc#formatting#textwidth = 72
 
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -126,10 +133,10 @@ augroup MY_AUTOCMDS
   "   to call your magic commands
   " - autocmd BufNewFile, BufRead [journal regex] set filetype=journal
   " - autocmd BufNewFile, BufRead [reviewindex regex] set filetype=reviewindex
-  autocmd BufNewFile ~/vimwiki/diary/[0-9]*.md :.!journaling %
-  autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d | .!reviews %
+  autocmd BufNewFile ~/vimwiki/diary/[0-9]* :.!journaling %
+  " autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d | .!reviews %
 
-  autocmd BufNewFile,BufRead *.md set filetype=markdown
+  autocmd BufNewFile,BufRead *.md set filetype=pandoc
   autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
 
   autocmd BufWritePre * :call TrimWhitespace()
@@ -147,6 +154,8 @@ augroup END
 
 let mapleader = ' '
 nnoremap <silent> <leader><CR> :noh<CR>:redraw!<CR>
+" noremap gf :e <CFILE><CR>
+noremap gf :echo "asdf"
 
 " yank like D or C
 noremap Y y$

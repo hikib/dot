@@ -15,9 +15,10 @@ export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*c
 export REPOS=$HOME/repos
 # export REPOS=/mnt/e/dev-repos-my
 export PAGES=$HOME/.config/searchweb/pages.yaml
-export GOPATH=$HOME/go
 
+export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
+
 export SCRIPTS=$REPOS/github.com/hikmet-kibar/scripts/bin
 export PATH=$PATH:$GOBIN:$SCRIPTS
 export TERM="xterm-256color"
