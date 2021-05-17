@@ -1,10 +1,13 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-THISDIR=$(dirname $(readlink -f $0))
-
-ln -svf $THISDIR/vimrc $HOME/.vimrc
-
-curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln -svf $THISDIR/vim/ftplugin $HOME/.vim/
+if [ "$OSTYPE" = "linux-gnu" ];then
+  THISDIR=$(dirname $(readlink -f $0))
+  ln -svf $THISDIR/vimrc $HOME/.vimrc
+  curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ln -svf $THISDIR/vim/ftplugin $HOME/.vim/
+else
+  echo "ERROR"
+  echo "Use the setup-gitbash.ps1 script if you're on Windows!!"
+fi
 

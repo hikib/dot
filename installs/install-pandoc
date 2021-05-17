@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 # got it from github.com/rwxrob
 loc=$(curl -o /dev/null -sIw "%{redirect_url}" 'https://github.com/jgm/pandoc/releases/latest')
 vers=${loc##*/}
@@ -7,4 +7,4 @@ uri=${loc%/tag*}/download/$vers/$deb
 echo "Downloading $uri"
 curl -sL "$uri" -o "/tmp/$deb"
 echo "Installing /tmp/$deb"
-sudo dpkg -i "/tmp/$deb"
+dpkg -i "/tmp/$deb"

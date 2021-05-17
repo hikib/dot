@@ -5,6 +5,7 @@ alias \
   pyvenv="python -m venv .env && source .env/bin/activate"
 
 
+# TODO: switch to bash script for gitbash
 alias \
   ?="searchweb -page=duck "         \
   ord="searchweb -page=ordnet "     \
@@ -17,8 +18,8 @@ alias \
 
 alias \
   vrc="vim ~/.vimrc"            \
-  -="vim ${DASHBOARD}"            \
-  brc="vim ~/.bash_profile"
+  brc="vim ~/.bash_profile"     \
+  vi=vim
 
 
 alias \

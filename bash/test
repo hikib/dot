@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+if [ "$OSTYPE" = "msys" -o "$OSTYPE" = "linux-gnu" ]
+then
+  echo "Move Bashrc"
+fi
+
