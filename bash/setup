@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-THISDIR=$(dirname $(readlink -f $0))
+THISDIR=$(dirname $(readlink -f $1))
 
 if [ "$OSTYPE" = "linux-gnu" ];then
   ln -svf $THISDIR/bashrc $HOME/.bashrc
