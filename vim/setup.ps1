@@ -1,5 +1,6 @@
 
 New-Item -ItemType SymbolicLink -Path "$home\.vimrc" -Target "$PSScriptRoot\vimrc" -Force
+New-Item -ItemType SymbolicLink -Path "$home\.vim\ftplugin" -Target "$PSScriptRoot\vim\ftplugin" -Force
 
 $vimplug = "$home\.vim\autoload\plug.vim"
 $plug_exists = Test-Path -LiteralPath $vimplug -PathType Leaf

@@ -25,3 +25,6 @@ export BASE=$HOME/vimwiki/
 export DASHBOARD=$BASE/README.md
 
 [ -r ~/.bash_aliases   ] && source ~/.bash_aliases
+set -o vi
+
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)

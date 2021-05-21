@@ -1,2 +1,4 @@
 *.swp
-vim/.vim/ftplugin/go/**
+vim/vim/ftplugin/go/**
+vim/vim/autoload/**
+

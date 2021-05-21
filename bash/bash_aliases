@@ -1,10 +1,5 @@
 # .bash_aliases
 
-alias \
-  python=python3                                                  \
-  pyvenv="python -m venv .env && source .env/bin/activate"
-
-
 # TODO: switch to bash script for gitbash
 alias \
   ?="searchweb -page=duck "         \
@@ -15,16 +10,18 @@ alias \
   github="searchweb -page=github "  \
   twitch="searchweb -page=twitch "
 
-
 alias \
   vrc="vim ~/.vimrc"            \
   brc="vim ~/.bash_profile"     \
+  grep="grep -i --colour=auto"  \
+  egrep="egrep -i --colour=auto"\
+  fgrep="fgrep -i --colour=auto"\
+  curl="curl -L"                \
+  ls="ls -h --color=auto"       \
   vi=vim
-
 
 alias \
   repos="cd ${REPOS} && ls -A"
-
 
 alias \
   k="clear"                      \
@@ -32,4 +29,5 @@ alias \
   mv="mv -iv"                    \
   rm="rm -v"                     \
   mkd="mkdir -pv"
+
 

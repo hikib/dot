@@ -1,4 +1,4 @@
-"2"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               plugins                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
@@ -8,31 +8,20 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-  echom "Don't forget to :GoInstallBinaries if you're doing Go dev."
-endif
-
-if !has("gui_running")
-  set term=xterm
 endif
 
 " flying
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
-" Plug 'vimwiki/vimwiki'
 
 " go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'sheerun/vim-polyglot'
 
 " misc
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'rwxrob/vim-pandoc-syntax-simple'
-" Plug 'lervag/vimtex'  " TODO: Use pandoc instead
-Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/goyo.vim'
+Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
@@ -44,6 +33,7 @@ syntax on
 filetype on
 filetype plugin on
 filetype indent on
+set belloff=all
 set nonumber
 set norelativenumber
 set nocompatible
@@ -85,41 +75,26 @@ set softtabstop=2
 set wildmenu        " Better command search
 set wildignorecase
 
-" let g:vimwiki_auto_header = 0
-" let g:vimwiki_listsyms = ' .oOX'
-" let g:vimwiki_markdown_link_ext = 1
-" let g:vimwiki_dir_link = 'README'
-" let g:vimwiki_list = [{'path': '~/vimwiki/',
-"                       \ 'index': 'README',
-"                       \ 'diary_index': 'README',
-"                       \ 'diary_header': 'Journal',
-"                       \ 'auto_toc': 0,
-"                       \ 'auto_diary_index': 1,
-"                       \ 'links_space_char': '-',
-"                       \ 'syntax': 'markdown',
-"                       \ 'ext': '.md'}]
-
-" let g:pandoc#folding#fdc = 1
-let g:pandoc#formatting#mode = 'h' " A'
-let g:pandoc#formatting#textwidth = 72
-
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+if !has("gui_running")
+  set term=xterm
 endif
-colorscheme nord
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                        functions & autocommands                      "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim background fix in tmux
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+
+colorscheme nord
+" colorscheme gruvbox
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                        functions & autocommands                      "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 fun! TrimWhitespace()
   let l:save = winsaveview()
@@ -128,15 +103,7 @@ fun! TrimWhitespace()
 endfun
 
 augroup MY_AUTOCMDS
-  " TODO:
-  " - create ftplugins for journal, reviewindex and other md files
-  "   to call your magic commands
-  " - autocmd BufNewFile, BufRead [journal regex] set filetype=journal
-  " - autocmd BufNewFile, BufRead [reviewindex regex] set filetype=reviewindex
-  autocmd BufNewFile ~/vimwiki/diary/[0-9]* :.!journaling %
-  " autocmd BufWritePre ~/vimwiki/pipelines/reviews/README.md :1,$d | .!reviews %
-
-  autocmd BufNewFile,BufRead *.md set filetype=pandoc
+  autocmd BufNewFile,BufRead *.md set filetype=markdown
   autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
 
   autocmd BufWritePre * :call TrimWhitespace()
@@ -154,8 +121,6 @@ augroup END
 
 let mapleader = ' '
 nnoremap <silent> <leader><CR> :noh<CR>:redraw!<CR>
-" noremap gf :e <CFILE><CR>
-noremap gf :echo "asdf"
 
 " yank like D or C
 noremap Y y$
@@ -178,8 +143,4 @@ nnoremap <silent> <leader>k :exec "!searchweb -page=korpus "
                               \ . expand("<cword>")<CR> :redraw!<CR>
 nnoremap <silent> <leader>t :exec "!searchweb -page=tysk "
                               \ . expand("<cword>")<CR> :redraw!<CR>
-
-" fzf
-nnoremap <C-f> :Files<CR>
-nnoremap <C-b> :Buffers<CR>
 
