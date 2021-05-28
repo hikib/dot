@@ -6,4 +6,3 @@ for i in vim tmux bash ; do
   cd -
 done
 
-
