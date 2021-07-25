@@ -24,10 +24,10 @@ alias \
   repos="cd ${REPOS} && ls -A"
 
 alias \
-  k="clear"                      \
-  cp="cp -iv"                    \
-  mv="mv -iv"                    \
-  rm="rm -v"                     \
+  k="clear"        \
+  cp="cp -iv"      \
+  mv="mv -iv"      \
+  rm="rm -v"       \
   mkd="mkdir -pv"
 
 
