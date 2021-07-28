@@ -23,7 +23,6 @@ call plug#end()
 
 
 " ----- SETTINGS
-
 syntax on
 filetype on
 filetype plugin on
@@ -72,7 +71,6 @@ set wildignorecase
 
 
 " ----- FUNCTIONS & AUTO COMMANDS
-
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -88,7 +86,6 @@ augroup END
 
 
 " ----- MAPPINGS
-
 let mapleader = ' '
 nnoremap <silent> <leader><CR> :noh<CR>:redraw!<CR>
 map <F8> <Esc>:setlocal spell spelllang=de<CR>
@@ -109,7 +106,6 @@ noremap <C-k> <C-b>
 
 
 " ----- COLORS
-
 if !has("gui_running")
   set term=xterm
 endif

@@ -1,32 +1,38 @@
 # .bash_profile
 
-_parse_git_branch() {
-	     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/ '
-}
-
-# --- for other scripts
-export MOME=$HOME/mome
-export PAGES=$HOME/.config/searchweb/pages.yaml
-
-# --- add paths
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
-export PATH=$PATH:$GOBIN:$SCRIPTS
-
-# --- overwriting defaults
-export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
-export TERM="xterm-256color"
-export PS1="\[\e[36m\W\]\[\e[33m\$(_parse_git_branch)\] $\[\e[00m\] "
-# export PS1="\u@\h \[\e[36m\w\]\[\e[33m\$(parse_git_branch)\]\[\e[00m\] $ "
-# export PS1="\[\e[33m$\]\[\e[32m\$(parse_git_branch)\] \[\e[00m\]"
 set -o vi
 
-# --- source other files
+# ----- PATHS
+# TODO: symlink scripts to ~/.local/bin/ instead
+export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
+export MOME=$HOME/mome    # Modus Operandi
+export GOPATH=$HOME/go    # GO
+export GOBIN=$GOPATH/bin  # GO
+export PATH=$PATH:$GOBIN:$SCRIPTS:$MOME
+
+# ----- HISTORY
+export HISTCONTROL=ignoreboth
+export HISTSIZE=5000
+export HISTFILESIZE=10000
+
+# ----- DEFAULTS
+# Ignore .git directories and cache files
+export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
+export TERM="xterm-256color" # Colour problems with tmux
+
+# ----- PROMPT
+__ps1(){
+  local GITBRANCH="$(git branch --show-current 2>/dev/null)"
+  test -n "$GITBRANCH" && GITBRANCH=" ($GITBRANCH)"
+  PS1="\[\e[36m\]\W\[\e[33m\]$GITBRANCH $\[\e[0m\] "
+}
+PROMPT_COMMAND="__ps1"
+
+# ----- SOURCE OTHERS
 [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
 
-# --- own tab completion
+# ----- TAB COMPLETION
 owncomp=(mo)
 for i in ${owncomp[@]}; do complete -C $i $i; done
 

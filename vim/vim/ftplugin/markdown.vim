@@ -1,3 +1,6 @@
+set tabstop=2
+
 hi mdTitle guibg=NONE guifg=#EBCB8B
-match mdTitle /^#.*/
+syntax match mdTitle /^#.*/
+
 
