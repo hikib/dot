@@ -5,7 +5,8 @@ set -o vi
 # ----- PATHS
 # TODO: symlink scripts to ~/.local/bin/ instead
 export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
-export MOME=$HOME/mome    # Modus Operandi
+export MOME=$HOME/mome            # Modus Operandi
+export SNIPPETS=$HOME/.snippets   # Snippets & Templates
 export GOPATH=$HOME/go    # GO
 export GOBIN=$GOPATH/bin  # GO
 export PATH=$PATH:$GOBIN:$SCRIPTS:$MOME
@@ -33,6 +34,6 @@ PROMPT_COMMAND="__ps1"
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
 
 # ----- TAB COMPLETION
-owncomp=(mo)
+owncomp=(mo snip)
 for i in ${owncomp[@]}; do complete -C $i $i; done
 

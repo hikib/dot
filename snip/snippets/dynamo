@@ -1,0 +1,47 @@
+import clr
+
+import sys
+sys.path.append("C:\Program Files (x86)\IronPython 2.7\Lib")
+# import System
+# from System import Array
+# from System.Collections.Generic import List
+
+# clr.AddReference("ProtoGeometry")
+# from Autodesk.DesignScript.Geometry import *
+
+# clr.AddReference("RevitNodes")
+# import Revit
+# clr.ImportExtensions(Revit.GeometryConversion)
+# clr.ImportExtensions(Revit.Elements)
+
+clr.AddReference("RevitServices")
+from RevitServices.Persistence import DocumentManager
+# from RevitServices.Transactions import TransactionManager
+
+clr.AddReference("RevitAPI")
+from Autodesk.Revit.DB import *
+# from Autodesk.Revit.DB.Structure import *
+# clr.AddReference("RevitAPIUI")
+# from Autodesk.Revit.UI import *
+
+doc = DocumentManager.Instance.CurrentDBDocument
+# uiapp = DocumentManager.Instance.CurrentUIApplication
+# app = uiapp.Application
+# uidoc = uiapp.ActiveUIDocument
+
+elements = UnwrapElement(IN[0])
+outlist = []
+
+# TransactionManager.Instance.EnsureInTransaction(doc)
+# TransactionManager.Instance.TransactionTaskDone()
+
+# doors = FilteredElementCollector(doc) \
+#     .OfCategory(BuiltInCategory.OST_Doors) \
+#     .WhereElementIsElementType() \
+#     .ToElements()
+# for door in doors:
+#     print(door.get_Parameter(
+#         BuiltInParameter.ALL_MODEL_FAMILY_NAME).AsString())
+
+OUT = outlist
+
