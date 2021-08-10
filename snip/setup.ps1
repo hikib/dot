@@ -1,5 +1,5 @@
 
-New-Item -ItemType SymbolicLink -Path "$home\.snippets" -Target "$PSScriptRoot\snippets" -Force
+New-Item -ItemType SymbolicLink -Path "$home\.snips" -Target "$PSScriptRoot\snips" -Force
 
 Read-Host -Prompt "Press Enter to exit"
 

@@ -3,7 +3,7 @@ BoldAsFont=yes
 Font=Cousine
 FontHeight=12
 ThemeFile=
-Transparency=high
+Transparency=off
 CursorType=block
 Locale=
 Charset=
@@ -34,3 +34,4 @@ Cyan=136,192,208
 BoldCyan=143,188,187
 White=229,233,240
 BoldWhite=236,239,244
+

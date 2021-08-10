@@ -3,7 +3,7 @@
 THISDIR=$(dirname $(readlink -f $0))
 
 if [ "$OSTYPE" = "linux-gnu" ];then
-  ln -svf $THISDIR/snippets $HOME/.snippets
+  ln -svf $THISDIR/snips $HOME/.snips
 else
   echo "ERROR"
   echo "Use the setup-gitbash.ps1 script if you're on Windows!"

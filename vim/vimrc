@@ -9,13 +9,7 @@ if empty(glob('~/.vim/autoload/plug.vim')) " Automatic installation of vim-plug
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'sheerun/vim-polyglot'
-
-" misc
-Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-commentary'
 Plug 'arcticicestudio/nord-vim'
 
@@ -23,6 +17,8 @@ call plug#end()
 
 
 " ----- SETTINGS
+
+
 syntax on
 filetype on
 filetype plugin on
@@ -48,6 +44,11 @@ set incsearch           " highlight search while typing
 set hlsearch
 set ignorecase
 
+set nofixendofline
+" better ascii friendly listchars
+set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
+set foldenable
+set wrapscan
 set noruler
 set laststatus=2
 set statusline=
@@ -56,7 +57,6 @@ set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=%*\ %l:%c%*                   " current line and column
 set statusline+=%*\ %p%%%*                    " percentage
 
-set nofoldenable    " disable folding
 set textwidth=72
 set linebreak
 set tabstop=2
@@ -69,6 +69,11 @@ set softtabstop=2
 set wildmenu        " Better command search
 set wildignorecase
 
+let g:netrw_liststyle=3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 " ----- FUNCTIONS & AUTO COMMANDS
 fun! TrimWhitespace()
@@ -84,7 +89,6 @@ augroup MY_AUTOCMDS
   autocmd CompleteDone * silent! pclose!
 augroup END
 
-
 " ----- MAPPINGS
 let mapleader = ' '
 nnoremap <silent> <leader><CR> :noh<CR>:redraw!<CR>
@@ -93,45 +97,64 @@ map <F9> <Esc>:setlocal spell spelllang=en_gb<CR>
 map <F10> <Esc>:setlocal spell spelllang=da<CR>
 map <F11> <Esc>:setlocal nospell<CR>
 
+" undo breakpoints
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
+inoremap * <C-g>u*
+
+" cursor positioning
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ'z
+
 " yank like D or C
-noremap Y y$
+nnoremap Y yg_
 
 " stay in visual mode
 vnoremap < <gv
 vnoremap > >gv
 
 " better page down and page up
-noremap <C-j> <C-d>
-noremap <C-k> <C-b>
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-b>
+
+" moving lines
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
 
 
 " ----- COLORS
-if !has("gui_running")
-  set term=xterm
-endif
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-  set t_Co=256
-endif
+set t_Co=256
+set t_AB=^[[48;5;%dm
+set t_AF=^[[38;5;%dm
+
 if exists('+termguicolors') " vim background fix in tmux
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-" let base16colorspace=256  " Access colors present in 256 colorspac
+" let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme nord
-hi ErrorMsg guibg=NONE guifg=red
-hi Error guibg=NONE guifg=red
-hi SpellBad guibg=NONE guifg=red
 hi Normal guibg=NONE
-hi SpecialKey guibg=NONE guifg=red
 hi Conceal guibg=NONE
-hi Comment guifg=#616E88
-hi StatusLine guibg=NONE guifg=#616E88
-hi StatusLineNC guibg=NONE guifg=#616E88
-hi Search guibg=NONE guifg=#EBCB8B
-hi IncSearch guibg=NONE guifg=#EBCB8B
-hi ModeMsg guibg=NONE guifg=#B48EAD
-hi MoreMsg guibg=NONE guifg=#B48EAD
-hi MatchParen guibg=NONE guifg=#EBCB8B
+" red
+hi ErrorMsg ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
+hi SpellBad ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
+hi Error ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
+hi SpecialKey ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
+" grey
+hi Comment ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+hi StatusLine ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+hi StatusLineNC ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+" yellow
+hi MatchParen guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi Search guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi IncSearch guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi ModeMsg guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi MoreMsg guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 

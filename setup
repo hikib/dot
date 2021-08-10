@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-for i in vim tmux bash snip ; do
+for i in vim tmux bash snip mintty ; do
   test $i tmux >/dev/null 2>&1 && echo "$i isn't installed. Skipping." && exit 1
   cd $i && ./setup
   cd -

@@ -5,10 +5,12 @@ set -o vi
 # ----- PATHS
 # TODO: symlink scripts to ~/.local/bin/ instead
 export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
-export MOME=$HOME/mome            # Modus Operandi
-export SNIPPETS=$HOME/.snippets   # Snippets & Templates
+export MOME=$HOME/mome        # Modus Operandi
+export SNIPPETS=$HOME/.snips  # Snippets & Templates
+
 export GOPATH=$HOME/go    # GO
 export GOBIN=$GOPATH/bin  # GO
+
 export PATH=$PATH:$GOBIN:$SCRIPTS:$MOME
 
 # ----- HISTORY
@@ -19,13 +21,25 @@ export HISTFILESIZE=10000
 # ----- DEFAULTS
 # Ignore .git directories and cache files
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
-export TERM="xterm-256color" # Colour problems with tmux
+
+# Colour problems with tmux
+if [ ! -z $(find /usr/share/terminfo -name "xterm-256color") ]; then
+  export TERM="xterm-256color"
+else
+  export TERM="xterm-color"
+fi
 
 # ----- PROMPT
 __ps1(){
   local GITBRANCH="$(git branch --show-current 2>/dev/null)"
-  test -n "$GITBRANCH" && GITBRANCH=" ($GITBRANCH)"
-  PS1="\[\e[36m\]\W\[\e[33m\]$GITBRANCH $\[\e[0m\] "
+  test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH"
+  local U="\[\e[0;34m\]\u"
+  local H="\[\e[0;34m\]\h"
+  local D="\[\e[1;34m\]\W"
+  local B="\[\e[1;33m\]$GITBRANCH"
+  local S="\[\e[1;33m\]$"
+  local TEXTRESET="\[\e[0m"
+  PS1="$U.$H $D$B $S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
 
@@ -34,6 +48,6 @@ PROMPT_COMMAND="__ps1"
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
 
 # ----- TAB COMPLETION
-owncomp=(mo snip)
+owncomp=(mo)
 for i in ${owncomp[@]}; do complete -C $i $i; done
 
