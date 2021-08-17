@@ -1,7 +1,8 @@
 Window=max
 BoldAsFont=yes
 Font=Cousine
-FontHeight=12
+FontHeight=14
+/* FontHeight=12 */
 ThemeFile=
 Transparency=off
 CursorType=block

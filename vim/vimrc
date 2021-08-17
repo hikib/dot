@@ -9,16 +9,18 @@ if empty(glob('~/.vim/autoload/plug.vim')) " Automatic installation of vim-plug
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-markdown'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
 
 " ----- SETTINGS
-
-
 syntax on
 filetype on
 filetype plugin on
@@ -76,6 +78,8 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
 " ----- FUNCTIONS & AUTO COMMANDS
+
+
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -88,6 +92,24 @@ augroup MY_AUTOCMDS
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd CompleteDone * silent! pclose!
 augroup END
+
+" Snip() & PasteSnip() depend on Vim 8.2+
+" because of popup (!)
+fun! Snip()
+  let l:snips = systemlist("snip ls")
+  let choice =  popup_menu( snips, #{
+        \ title: "Snips:",
+        \ pos: "center",
+        \ callback: "PasteSnip",
+        \ border: [],
+        \ padding: [0,1,0,1]} )
+endfunction
+fun! PasteSnip(id, result)
+  let l:line = line(".")
+  let l:snipName =  systemlist("snip ls")[a:result - 1]
+  let l:cmd = join(["snip get", snipName], " ")
+  call append(line, systemlist(cmd))
+endfunction
 
 " ----- MAPPINGS
 let mapleader = ' '
@@ -120,6 +142,10 @@ vnoremap > >gv
 nnoremap <C-j> <C-d>
 nnoremap <C-k> <C-b>
 
+" Snip() & PasteSnip() depend on Vim 8.2+
+" because of popup (!)
+nnoremap <leader>s :call Snip()<CR>
+
 " moving lines
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
@@ -148,13 +174,14 @@ hi SpellBad ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
 hi Error ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
 hi SpecialKey ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
 " grey
-hi Comment ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
-hi StatusLine ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
-hi StatusLineNC ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+hi LineNr ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+hi Comment ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+hi StatusLine ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
+hi StatusLineNC ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
 " yellow
-hi MatchParen guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
-hi Search guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
-hi IncSearch guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
-hi ModeMsg guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
-hi MoreMsg guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi MatchParen ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi Search ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi IncSearch ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi ModeMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+hi MoreMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 
