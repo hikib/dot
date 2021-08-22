@@ -2,14 +2,8 @@
 
 THISDIR=$(dirname $(readlink -f $0))
 
-if [ "$OSTYPE" = "linux-gnu" ];then
-  ln -svf $THISDIR/bashrc $HOME/.bashrc
-  ln -svf $THISDIR/bash_profile $HOME/.bash_profile
-  ln -svf $THISDIR/bash_aliases $HOME/.bash_aliases
-  ln -svf $THISDIR/dir_colors $HOME/.dir_colors
-else
-  echo "ERROR"
-  echo "Use the setup-gitbash.ps1 script if you're on Windows!"
-fi
-
+ln -svf $THISDIR/bashrc $HOME/.bashrc
+ln -svf $THISDIR/bash_profile $HOME/.bash_profile
+ln -svf $THISDIR/bash_aliases $HOME/.bash_aliases
+ln -svf $THISDIR/dir_colors $HOME/.dir_colors
 
