@@ -54,6 +54,5 @@ PROMPT_COMMAND="__ps1"
 
 # ----- SOURCE OTHERS
 [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
-[ -r ~/.bash_profile ] && source ~/.bash_profile
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
 
