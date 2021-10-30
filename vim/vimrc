@@ -1,6 +1,4 @@
-
 " ----- PLUGINS
-
 call plug#begin('~/.vim/plugged')
 
 if empty(glob('~/.vim/autoload/plug.vim')) " Automatic installation of vim-plug
@@ -8,7 +6,6 @@ if empty(glob('~/.vim/autoload/plug.vim')) " Automatic installation of vim-plug
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -19,6 +16,9 @@ Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
+" ----- SOURCES
+source ~/.vim/functions.vim " functions and autocommands
+source ~/.vim/mappings.vim
 
 " ----- SETTINGS
 syntax on
@@ -46,8 +46,8 @@ set incsearch           " highlight search while typing
 set hlsearch
 set ignorecase
 
-set nofixendofline
-" better ascii friendly listchars
+set path+=**
+set nofixendofline      " better ascii friendly listchars
 set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
 set foldenable
 set wrapscan
@@ -77,96 +77,20 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
-" ----- FUNCTIONS & AUTO COMMANDS
 
-
-fun! TrimWhitespace()
-  let l:save = winsaveview()
-  keeppatterns %s/\s\+$//e
-  call winrestview(l:save)
-endfun
-
-augroup MY_AUTOCMDS
-  autocmd BufWinEnter,BufNewFile,BufRead *.md set filetype=markdown
-  autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
-  autocmd BufWritePre * :call TrimWhitespace()
-  autocmd CompleteDone * silent! pclose!
-augroup END
-
-" Snip() & PasteSnip() depend on Vim 8.2+
-" because of popup (!)
-fun! Snip()
-  let l:snips = systemlist("snip ls")
-  let choice =  popup_menu( snips, #{
-        \ title: "Snips:",
-        \ pos: "center",
-        \ callback: "PasteSnip",
-        \ border: [],
-        \ padding: [0,1,0,1]} )
-endfunction
-fun! PasteSnip(id, result)
-  let l:line = line(".")
-  let l:snipName =  systemlist("snip ls")[a:result - 1]
-  let l:cmd = join(["snip get", snipName], " ")
-  call append(line, systemlist(cmd))
-endfunction
-
-" ----- MAPPINGS
-let mapleader = ' '
-nnoremap <silent> <leader><CR> :noh<CR>:redraw!<CR>
-map <F8> <Esc>:setlocal spell spelllang=de<CR>
-map <F9> <Esc>:setlocal spell spelllang=en_gb<CR>
-map <F10> <Esc>:setlocal spell spelllang=da<CR>
-map <F11> <Esc>:setlocal nospell<CR>
-
-" undo breakpoints
-inoremap , ,<C-g>u
-inoremap . .<C-g>u
-inoremap ! !<C-g>u
-inoremap ? ?<C-g>u
-inoremap * <C-g>u*
-
-" cursor positioning
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ'z
-
-" yank like D or C
-nnoremap Y yg_
-
-" stay in visual mode
-vnoremap < <gv
-vnoremap > >gv
-
-" better page down and page up
-nnoremap <C-j> <C-d>
-nnoremap <C-k> <C-b>
-
-" Snip() & PasteSnip() depend on Vim 8.2+
-" because of popup (!)
-nnoremap <leader>s :call Snip()<CR>
-
-" moving lines
-vnoremap K :m '<-2<CR>gv=gv
-vnoremap J :m '>+1<CR>gv=gv
-nnoremap <leader>k :m .-2<CR>==
-nnoremap <leader>j :m .+1<CR>==
-
-
-" ----- COLORS
 set t_Co=256
 set t_AB=^[[48;5;%dm
 set t_AF=^[[38;5;%dm
 
-if exists('+termguicolors') " vim background fix in tmux
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
+" if exists('+termguicolors') " vim background fix in tmux
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+" endif
 " let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme nord
-hi Normal guibg=NONE
+
 hi Conceal guibg=NONE
 " red
 hi ErrorMsg ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
@@ -184,4 +108,39 @@ hi Search ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi IncSearch ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi ModeMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi MoreMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
+
+" purple
+" hi Type ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Statement ctermfg=57 guifg=#875fd7 guibg=NONE
+
+" hi Boolean ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Character ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Comment ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Conceal ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Conditional ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Constant ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Decorator ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Define ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Delimiter ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Exception ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Float ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Function ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Identifier ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Include ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Keyword ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Label ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Number ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Operator ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi PreProc ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Repeat ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Special ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi SpecialChar ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi SpecialComment ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi StorageClass ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi String ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Structure ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Tag ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Todo ctermfg=57 guifg=#875fd7 guibg=NONE
+" hi Typedef ctermfg=57 guifg=#875fd7 guibg=NONE
+
 

@@ -12,7 +12,7 @@ alias \
 
 alias \
   vrc="vim ~/.vimrc"            \
-  brc="vim ~/.bash_profile"     \
+  brc="vim ~/.bashrc"     \
   grep="grep -i --colour=auto"  \
   egrep="egrep -i --colour=auto"\
   fgrep="fgrep -i --colour=auto"\

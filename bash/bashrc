@@ -17,6 +17,7 @@ set -o vi
 # export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
 export MOME=$HOME/mome          # Modus Operandi
 export SNIPPETS=$HOME/.snips    # Snippets & Templates
+# TODO: Check if Go is installed before exporting
 export GOPATH=$HOME/go          # GO
 export GOBIN=$GOPATH/bin        # GO
 
@@ -39,6 +40,7 @@ else
 fi
 
 # ----- PROMPT
+# search for: ANSI color codes
 __ps1(){
   local GITBRANCH="$(git branch --show-current 2>/dev/null)"
   test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH"
@@ -48,7 +50,7 @@ __ps1(){
   local B="\[\e[1;33m\]$GITBRANCH"
   local S="\[\e[1;33m\]$"
   local TEXTRESET="\[\e[0m"
-  PS1="$U.$H $D$B $S $TEXTRESET"
+  PS1="$U.$H $D$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
 

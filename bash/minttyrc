@@ -16,9 +16,11 @@ BellTaskbar=no
 Scrollbar=none
 Language=en
 BellPopup=no
+CursorColour=216,222,233
+
+/* NORD */
 BackgroundColour=46,52,64
 ForegroundColour=216,222,233
-CursorColour=216,222,233
 Black=59,66,82
 BoldBlack=76,86,106
 Red=191,97,106
