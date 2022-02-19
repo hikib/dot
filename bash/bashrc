@@ -17,6 +17,8 @@ set -o vi
 # export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
 export MOME=$HOME/mome          # Modus Operandi
 export SNIPPETS=$HOME/.snips    # Snippets & Templates
+export VISUAL=vim
+export EDITOR="$VISUAL"
 # TODO: Check if Go is installed before exporting
 export GOPATH=$HOME/go          # GO
 export GOBIN=$GOPATH/bin        # GO
