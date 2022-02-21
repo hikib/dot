@@ -23,6 +23,7 @@ export EDITOR="$VISUAL"
 export GOPATH=$HOME/go          # GO
 export GOBIN=$GOPATH/bin        # GO
 
+export REPOS=$HOM/repos/github.com/hikmet-kibar
 export PATH=$PATH:$GOBIN:$MOME
 
 # ----- HISTORY
