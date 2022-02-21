@@ -4,27 +4,27 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 
-augroup MY_AUTOCMDS
-  autocmd BufWinEnter,BufNewFile,BufRead *.md set filetype=markdown
-  autocmd BufNewFile,BufRead *.{yaml,yml} set filetype=yaml
-  autocmd BufWritePre * :call TrimWhitespace()
-  autocmd CompleteDone * silent! pclose!
-augroup END
+au BufWritePre * :call TrimWhitespace()
+au CompleteDone * silent! pclose!
 
-" Snip() & PasteSnip() depend on Vim 8.2+
-" because of the popup menu(!)
-fun! Snip()
-  let l:snips = systemlist("snip ls")
-  let choice =  popup_menu( snips, #{
-        \ title: "Snips:",
-        \ pos: "center",
-        \ callback: "PasteSnip",
-        \ border: [],
-        \ padding: [0,1,0,1]} )
+" Ensure Goyo exits
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
-fun! PasteSnip(id, result)
-  let l:line = line(".")
-  let l:snipName =  systemlist("snip ls")[a:result - 1]
-  let l:cmd = join(["snip get", snipName], " ")
-  call append(line, systemlist(cmd))
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
 endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()

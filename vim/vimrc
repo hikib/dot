@@ -1,17 +1,27 @@
 " ----- PLUGINS
-call plug#begin('~/.vim/plugged')
+" prevent polyglot from overwriting markdown
+let g:polyglot_disabled = ['markdown']
 
-if empty(glob('~/.vim/autoload/plug.vim')) " Automatic installation of vim-plug
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin('~/.vim/plugged')
+
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-markdown'
+" Plug 'tpope/vim-markdown'
 Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
@@ -19,6 +29,7 @@ call plug#end()
 " ----- SOURCES
 source ~/.vim/functions.vim " functions and autocommands
 source ~/.vim/mappings.vim
+source ~/.vim/snip.vim
 
 " ----- SETTINGS
 syntax on
@@ -78,41 +89,44 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 
 
-set t_Co=256
-set t_AB=^[[48;5;%dm
-set t_AF=^[[38;5;%dm
+" set t_Co=256
+" set t_AB=^[[48;5;%dm
+" set t_AF=^[[38;5;%dm
 
 " if exists('+termguicolors') " vim background fix in tmux
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" set termguicolors
 " endif
-" let base16colorspace=256  " Access colors present in 256 colorspace
+
+let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme nord
 
+" " search for: 256 colors xterm
 hi Conceal guibg=NONE
-" red
+" " red
 hi ErrorMsg ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
 hi SpellBad ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
 hi Error ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
 hi SpecialKey ctermfg=160 ctermbg=NONE guifg=#d70000 guibg=NONE "rgb=215,0,0
-" grey
+" " grey
 hi LineNr ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
 hi Comment ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
 hi StatusLine ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
 hi StatusLineNC ctermbg=NONE ctermfg=242 guifg=#6c6c6c guibg=NONE "rgb=108,108,108
-" yellow
+" " yellow
 hi MatchParen ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi Search ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi IncSearch ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi ModeMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 hi MoreMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 
-" purple
-" hi Type ctermfg=57 guifg=#875fd7 guibg=NONE
-" hi Statement ctermfg=57 guifg=#875fd7 guibg=NONE
-
+" orange
+" hi PreProc ctermfg=215 guifg=#ff8700 guibg=NONE
+" hi Number ctermfg=215 guifg=#ff8700 guibg=NONE
+" hi String ctermfg=215 guifg=#ff8700 guibg=NONE
+" ----- other things
 " hi Boolean ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Character ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Comment ctermfg=57 guifg=#875fd7 guibg=NONE
@@ -129,9 +143,7 @@ hi MoreMsg ctermbg=NONE guibg=NONE ctermfg=220 guifg=#ffd700 "rgb=255,215,0
 " hi Include ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Keyword ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Label ctermfg=57 guifg=#875fd7 guibg=NONE
-" hi Number ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Operator ctermfg=57 guifg=#875fd7 guibg=NONE
-" hi PreProc ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Repeat ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi Special ctermfg=57 guifg=#875fd7 guibg=NONE
 " hi SpecialChar ctermfg=57 guifg=#875fd7 guibg=NONE
