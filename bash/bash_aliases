@@ -1,14 +1,5 @@
 # .bash_aliases
 
-# TODO: switch to bash script for gitbash
-alias \
-  ?="searchweb -page=duck "         \
-  ord="searchweb -page=ordnet "     \
-  korp="searchweb -page=korpus "    \
-  tysk="searchweb -page=tysk "      \
-  yt="searchweb -page=youtube "     \
-  github="searchweb -page=github "  \
-  twitch="searchweb -page=twitch "
 
 alias \
   vrc="vim ~/.vimrc"            \
@@ -29,5 +20,8 @@ alias \
   mv="mv -iv"      \
   rm="rm -v"       \
   mkd="mkdir -pv"
+
+alias \
+  dev="ssh hiko@127.0.0.0.1 -p 909"        \
 
 
