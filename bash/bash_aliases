@@ -22,6 +22,6 @@ alias \
   mkd="mkdir -pv"
 
 alias \
-  dev="ssh hiko@127.0.0.0.1 -p 909"        \
+  dev="ssh hiko@127.0.0.1 -p 909"        \
 
 
