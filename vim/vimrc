@@ -29,7 +29,6 @@ call plug#end()
 " ----- SOURCES
 source ~/.vim/functions.vim " functions and autocommands
 source ~/.vim/mappings.vim
-source ~/.vim/snip.vim
 
 " ----- SETTINGS
 syntax on
