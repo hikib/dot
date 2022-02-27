@@ -5,6 +5,10 @@ map <F9> <Esc>:setlocal spell spelllang=en_gb<CR>
 map <F10> <Esc>:setlocal spell spelllang=da<CR>
 map <F11> <Esc>:setlocal nospell<CR>
 
+" netrw
+nnoremap <leader>dd :Lexplore %:p:h<CR>
+nnoremap <Leader>da :Lexplore<CR>
+
 " undo breakpoints
 inoremap , ,<C-g>u
 inoremap . .<C-g>u
@@ -28,12 +32,11 @@ vnoremap > >gv
 nnoremap <C-j> <C-d>
 nnoremap <C-k> <C-b>
 
-" Snip() & PasteSnip() depend on Vim 8.2+
-" because of popup (!). See in functions.vim
-nnoremap <leader>s :call Snip()<CR>
-
 " moving lines
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 nnoremap <leader>k :m .-2<CR>==
 nnoremap <leader>j :m .+1<CR>==
+
+" reload source
+nnoremap <leader>r :source $MYVIMRC<CR>

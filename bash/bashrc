@@ -3,61 +3,54 @@
 # source global definitions
 [ -f /etc/bashrc ] && . /etc/bashrc
 
-# user specific environment
+# ----- DEFAULTS
+if [[ $TERM == xterm ]]; then
+    TERM=xterm-256color
+fi
+
+if [[ $TERM == screen ]]; then
+    TERM=screen-256color
+fi
+
+set -o vi
+export VISUAL=vim
+export EDITOR="$VISUAL"
+# Ignore .git directories and cache files
+export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
+
+# ----- PATHS
+export MOME=$HOME/mome          # Modus Operandi
+export GOPATH=$HOME/go          # GO
+export GOBIN=$GOPATH/bin        # GO
+export REPOS=$HOME/repos/github.com/hikmet-kibar
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+export PATH=$PATH:$GOBIN
 export PATH
-
-set -o vi
-
-# ----- PATHS
-# TODO: symlink scripts to ~/.local/bin/ instead
-# export SCRIPTS=$HOME/repos/github.com/hikmet-kibar/scripts/bin
-export MOME=$HOME/mome          # Modus Operandi
-export SNIPPETS=$HOME/.snips    # Snippets & Templates
-export VISUAL=vim
-export EDITOR="$VISUAL"
-# TODO: Check if Go is installed before exporting
-export GOPATH=$HOME/go          # GO
-export GOBIN=$GOPATH/bin        # GO
-
-export REPOS=$HOM/repos/github.com/hikmet-kibar
-export PATH=$PATH:$GOBIN:$MOME
 
 # ----- HISTORY
 export HISTCONTROL=ignoreboth
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 
-# ----- DEFAULTS
-# Ignore .git directories and cache files
-export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
-
-# Colour problems with tmux
-if [ ! -z $(find /usr/share/terminfo -name "xterm-256color") ]; then
-  export TERM="xterm-256color"
-else
-  export TERM="xterm-color"
-fi
-
 # ----- PROMPT
 # search for: ANSI color codes
 __ps1(){
   local GITBRANCH="$(git branch --show-current 2>/dev/null)"
   test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH"
-  local U="\[\e[0;34m\]\u"
-  local H="\[\e[0;34m\]\h"
-  local D="\[\e[1;34m\]\W"
-  local B="\[\e[1;33m\]$GITBRANCH"
-  local S="\[\e[1;33m\]$"
+  local U="\[\e[0;32m\]\u"
+  local H="\[\e[1;32m\]\h"
+  local D="\[\e[0;32m\]\W"
+  local B="\[\e[1;32m\]$GITBRANCH"
+  local S="\[\e[1;32m\]$"
   local TEXTRESET="\[\e[0m"
   PS1="$U.$H $D$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
 
-# ----- SOURCE OTHERS
+# ----- OTHER SOURCES
 [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
 
