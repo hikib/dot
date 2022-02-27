@@ -1,8 +1,0 @@
-#!/bin/bash
-
-mkdir -p ~/go/{bin,pkg,src}
-add-apt-repository ppa:longsleep/golang-backports
-apt update
-apt install golang-go
-
-

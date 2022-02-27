@@ -1,5 +1,0 @@
-#!/bin/sh
-
-apt install ffmpeg
-add-apt-repository ppa:obsproject/obs-studio
-apt install obs-studio
