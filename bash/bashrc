@@ -39,14 +39,14 @@ export HISTFILESIZE=10000
 # search for: ANSI color codes
 __ps1(){
   local GITBRANCH="$(git branch --show-current 2>/dev/null)"
-  test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH"
-  local U="\[\e[0;32m\]\u"
-  local H="\[\e[1;32m\]\h"
-  local D="\[\e[0;32m\]\W"
-  local B="\[\e[1;32m\]$GITBRANCH"
-  local S="\[\e[1;32m\]$"
+  test -n "$GITBRANCH" && GITBRANCH="$GITBRANCH"
+  local U="\[\e[2;32m\]\u"  # user
+  local H="\[\e[0;32m\]\h"  # machine
+  local D="\[\e[2;32m\]\W"  # directory
+  local B="\[\e[0;32m\]$GITBRANCH"
+  local S="\[\e[0;32m\]λ"
   local TEXTRESET="\[\e[0m"
-  PS1="$U.$H $D$B \n$S $TEXTRESET"
+  PS1="$U.$H $D.$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
 
