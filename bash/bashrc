@@ -20,15 +20,16 @@ export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*c
 
 # ----- PATHS
 export MOME=$HOME/mome          # Modus Operandi
-export GOPATH=$HOME/go          # GO
-export GOBIN=$GOPATH/bin        # GO
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
 export REPOS=$HOME/repos/github.com/hikmet-kibar
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+export PATH=$PATH
 export PATH=$PATH:$GOBIN
-export PATH
+# export PATH
 
 # ----- HISTORY
 export HISTCONTROL=ignoreboth
@@ -39,14 +40,14 @@ export HISTFILESIZE=10000
 # search for: ANSI color codes
 __ps1(){
   local GITBRANCH="$(git branch --show-current 2>/dev/null)"
-  test -n "$GITBRANCH" && GITBRANCH="$GITBRANCH"
+  test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH" # show dot
   local U="\[\e[2;32m\]\u"  # user
   local H="\[\e[0;32m\]\h"  # machine
   local D="\[\e[2;32m\]\W"  # directory
   local B="\[\e[0;32m\]$GITBRANCH"
   local S="\[\e[0;32m\]λ"
   local TEXTRESET="\[\e[0m"
-  PS1="$U.$H $D.$B \n$S $TEXTRESET"
+  PS1="$U.$H $D$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
 
