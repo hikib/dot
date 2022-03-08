@@ -92,8 +92,8 @@ hi! link netrwMarkFile Search
 " ----- Colors
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
-hi Conceal guibg=NONE
-set background=dark
+" hi Conceal guibg=NONE
+" set background=dark
 set termguicolors
 colorscheme matrix
 

@@ -46,7 +46,7 @@ __ps1(){
   local D="\[\e[2;32m\]\W"  # directory
   local B="\[\e[0;32m\]$GITBRANCH"
   local S="\[\e[0;32m\]λ"
-  local TEXTRESET="\[\e[0m"
+  local TEXTRESET="\[\e[0;32m"
   PS1="$U.$H $D$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"

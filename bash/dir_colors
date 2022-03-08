@@ -47,10 +47,10 @@ TERM xterm-kitty
 #+-----------------+
 #+ Global Defaults +
 #+-----------------+
-NORMAL 00
-RESET 0
+NORMAL 02;32
+RESET 02;32
 
-FILE 00
+FILE 02;32
 DIR 01;32
 LINK 01;30
 MULTIHARDLINK 04;35
