@@ -1,11 +1,3 @@
-# Copyright (C) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
-# Copyright (C) 2017-present Sven Greb <development@svengreb.de>
-
-# Project:    Nord dircolors
-# Version:    0.2.0
-# Repository: https://github.com/arcticicestudio/nord-dircolors
-# License:    MIT
-
 COLOR tty
 
 TERM alacritty
@@ -60,7 +52,7 @@ RESET 0
 
 FILE 00
 DIR 01;32
-LINK 36
+LINK 01;30
 MULTIHARDLINK 04;35
 
 FIFO 04;01;35

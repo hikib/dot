@@ -117,7 +117,7 @@ hi WildMenu         guisp=NONE guifg=#00FF87 guibg=NONE ctermfg=13 ctermbg=233 g
 " major
 
 hi Normal     guisp=NONE guifg=#23755A guibg=#0F191C ctermfg=15 ctermbg=233 gui=NONE   cterm=NONE
-hi Comment    guisp=NONE guifg=#334740 guibg=#101A1E ctermfg=4 ctermbg=NONE gui=NONE cterm=NONE
+hi Comment    guisp=NONE guifg=#384545 guibg=NONE ctermfg=4 ctermbg=NONE gui=NONE cterm=NONE
 hi Constant   guisp=NONE guifg=#644A7F guibg=NONE ctermfg=55 ctermbg=NONE gui=bold cterm=bold
 hi Identifier guisp=NONE guifg=#2FC079 guibg=NONE ctermfg=22 ctermbg=NONE  gui=bold cterm=bold
 hi Statement  guisp=NONE guifg=#2FC079 guibg=NONE ctermfg=22  ctermbg=NONE  gui=NONE   cterm=NONE
@@ -142,7 +142,7 @@ hi Repeat         guisp=NONE guifg=#81B32C guibg=NONE ctermfg=22  ctermbg=233 gu
 hi Label          guisp=NONE guifg=#81B32C guibg=NONE ctermfg=22  ctermbg=233 gui=bold cterm=bold
 hi Operator       guisp=NONE guifg=#644A7F guibg=NONE ctermfg=55 ctermbg=233 gui=bold cterm=bold
 hi Keyword        guisp=NONE guifg=#688060 guibg=NONE ctermfg=28  ctermbg=233 gui=bold cterm=bold
-"hi Keyword        guisp=NONE guifg=#644A7F guibg=NONE ctermfg=67  ctermbg=233 gui=NONE cterm=bold
+" hi Keyword        guisp=NONE guifg=#644A7F guibg=NONE ctermfg=67  ctermbg=233 gui=NONE cterm=bold
 hi Exception      guisp=NONE guifg=#A0EDA2 guibg=NONE ctermfg=14 ctermbg=233 gui=NONE cterm=NONE
 hi Include        guisp=NONE guifg=#678C61 guibg=NONE ctermfg=22  ctermbg=233 gui=NONE cterm=NONE
 hi Define         guisp=NONE guifg=#6FC084 guibg=NONE ctermfg=2 ctermbg=233 gui=NONE cterm=NONE
@@ -188,7 +188,7 @@ hi TSParameter          guisp=NONE guifg=#B7D97D guibg=NONE ctermfg=100 ctermbg=
 hi TSParameterReference guisp=NONE guifg=#7DF9A3 guibg=NONE ctermfg=85 ctermbg=233 gui=NONE cterm=NONE
 hi TSPunctDelimiter     guisp=NONE guifg=#BCBF30 guibg=NONE ctermfg=95 ctermbg=233 gui=NONE cterm=NONE
 " bracket FFAF00
-hi TSPunctBracket       guisp=NONE guifg=#7E6A00 guibg=NONE ctermfg=94 ctermbg=233 gui=NONE cterm=NONE  
+hi TSPunctBracket       guisp=NONE guifg=#7E6A00 guibg=NONE ctermfg=94 ctermbg=233 gui=NONE cterm=NONE
 hi TSPunctSpecial       guisp=NONE guifg=#644A7F guibg=NONE ctermfg=55 ctermbg=233 gui=NONE cterm=NONE
 hi TSStringRegex        guisp=NONE guifg=#644A7F guibg=NONE ctermfg=55 ctermbg=233 gui=NONE cterm=NONE
 hi TSStringEscape       guisp=NONE guifg=#644A7F guibg=NONE ctermfg=55 ctermbg=233 gui=NONE cterm=NONE
