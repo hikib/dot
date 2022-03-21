@@ -20,7 +20,11 @@ Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+
 " Plug 'tpope/vim-markdown'
+
+
 
 call plug#end()
 
@@ -93,8 +97,9 @@ hi! link netrwMarkFile Search
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " hi Conceal guibg=NONE
-" set background=dark
+set background=dark
 set termguicolors
-colorscheme matrix
-
-
+" colorscheme matrix
+colorscheme spaceduck
+hi StatusLine guifg=#30365F ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Conceal ctermbg=NONE
