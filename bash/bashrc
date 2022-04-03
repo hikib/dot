@@ -41,18 +41,18 @@ export HISTFILESIZE=10000
 __ps1(){
   local GITBRANCH="$(git branch --show-current 2>/dev/null)"
   test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH" # show dot
-  local U="\[\e[00;38;5;244m\]\u"  # user
-  local H="\[\e[00;38;5;107m\]\h"  # machine
-  local D="\[\e[00;38;5;244m\]\W"  # directory
-  local B="\[\e[00;38;5;107m\]$GITBRANCH"
-  local S="\[\e[00;38;5;160m\]$"
+  local U="\[\e[00;38;5;255m\]\u"  # user
+  local H="\[\e[00;38;5;180m\]\h"  # machine
+  local D="\[\e[00;38;5;255m\]\W"  # directory
+  local B="\[\e[00;38;5;180m\]$GITBRANCH"
+  local S="\[\e[00;38;5;203m\]$"
   local TEXTRESET="\[\e[00;38;5;223m"
   PS1="$U.$H $D$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
 
 # ----- OTHER SOURCES
-[ -r ~/.dircolors ] && eval $(dircolors ~/.dircolors)
+[ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
 [ -r ~/.vim/plugged/gruvbox/gruvbox_256palette.sh ] && source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
 

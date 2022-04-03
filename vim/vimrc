@@ -16,13 +16,17 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'morhetz/gruvbox'
-
 " Plug 'tpope/vim-markdown'
+Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'morhetz/gruvbox'
+Plug 'huyvohcmc/atlas.vim'
+Plug 'Lokaltog/vim-monotone'
 
 
 
@@ -38,8 +42,9 @@ filetype on
 filetype plugin on
 filetype indent on
 set belloff=all
-set number
-set relativenumber
+" set number
+" set relativenumber
+set nonumber
 set nocompatible
 set icon
 set showmode
@@ -93,6 +98,8 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 hi! link netrwMarkFile Search
 
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+
 " ----- Colors
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
@@ -100,4 +107,6 @@ hi! link netrwMarkFile Search
 set background=dark
 set termguicolors
 " colorscheme matrix
-autocmd vimenter * ++nested colorscheme gruvbox
+" colorscheme atlas
+colorscheme monotone
+" autocmd vimenter * ++nested colorscheme gruvbox

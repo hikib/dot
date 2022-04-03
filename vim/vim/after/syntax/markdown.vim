@@ -4,22 +4,19 @@
 
 " START IN GOYO
 autocmd VimEnter * :Goyo
-set spell
+
 set spelllang=en
+set nospell
 
 syn spell toplevel
 syn case ignore
 syn sync linebreaks=1
 
-" syntax region mdHeading start="^\s*#" end="$"
-" syntax region mdSubHeading start="^\s*##" end="$"
-syntax match Normal "^\*" conceal cchar=●
 let b:current_syntax = "markdown"
+syntax region mdHeading start="^\s*#" end="$"
+syntax match Normal "^\*" conceal cchar=●
 
-" hi mdHeading cterm=bold ctermfg=11
-" hi mdHeading cterm=NONE ctermfg=173
-" hi mdHeading cterm=bold ctermfg=173
-" hi mdSubHeading cterm=bold ctermfg=White
-" hi mdSubHeading cterm=NONE
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
+
+hi mdHeading ctermfg=180
+" hi mdHeading ctermfg=255
