@@ -24,9 +24,9 @@ Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/limelight.vim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+" Plug 'Lokaltog/vim-monotone'
 Plug 'huyvohcmc/atlas.vim'
-Plug 'Lokaltog/vim-monotone'
 
 
 
@@ -98,15 +98,10 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 hi! link netrwMarkFile Search
 
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
-
 " ----- Colors
 
 " let base16colorspace=256  " Access colors present in 256 colorspace
 " hi Conceal guibg=NONE
 set background=dark
 set termguicolors
-" colorscheme matrix
-" colorscheme atlas
 colorscheme monotone
-" autocmd vimenter * ++nested colorscheme gruvbox
