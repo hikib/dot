@@ -54,5 +54,3 @@ PROMPT_COMMAND="__ps1"
 # ----- OTHER SOURCES
 [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
-[ -r ~/.vim/plugged/gruvbox/gruvbox_256palette.sh ] && source ~/.vim/plugged/gruvbox/gruvbox_256palette.sh
-

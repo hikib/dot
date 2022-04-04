@@ -72,53 +72,10 @@ TERM xterm-color
 TERM xterm-debian
 TERM xterm-termite
 
-# Below are the color init strings for the basic file types. A color init string
-# consists of one or more of the following numeric codes:
-#
-# Attributes:
-#
-#  0     to restore default color
-#  1     for brighter colors
-#  4     for underlined text
-#  5     for flashing text
-#
-# Foreground:
-#
-# 30     for black foreground
-# 31     for red foreground
-# 32     for green foreground
-# 33     for yellow (or brown) foreground
-# 34     for blue foreground
-# 35     for purple foreground
-# 36     for cyan foreground
-# 37     for white (or gray) foreground
-#
-# Background:
-#
-# 40     for black background
-# 41     for red background
-# 42     for green background
-# 43     for yellow (or brown) background
-# 44     for blue background
-# 45     for purple background
-# 46     for cyan background
-# 47     for white (or gray) background
-#
-# 256 colour is available:
-#
-# - https://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html
-# - https://github.com/morhetz/gruvbox
-#
-# Text color coding:
-# 38;5;COLOR_NUMBER
-# Background color coding:
-# 48;5;COLOR_NUMBER
-# COLOR_NUMBER is from 0 to 255.
-
-NORMAL 00;38;5;250 # no color code at all
-FILE   00;38;5;223 # regular file: use no color at all
-RESET  00;38;5;172 # reset to "normal" color
-DIR    00;38;5;166 # directory
+NORMAL 00;38;5;255 # no color code at all
+FILE   00;38;5;255 # regular file: use no color at all
+RESET  00;38;5;255 # reset to "normal" color
+DIR    00;38;5;246 # directory
 LINK   target      # symbolic link. (If you set this to 'target' instead of a
                    # numerical value, the color is as for the file pointed to.)
 
@@ -253,23 +210,23 @@ EXEC  01;30;32
 .xspf 01;33
 
 # documents
-.doc   38;5;109
-.docx  38;5;109
-.html  38;5;109
-.js    38;5;109
-.json  38;5;109
-.md    38;5;109
-.neon  38;5;109
-.odp   38;5;109
-.ods   38;5;109
-.odt   38;5;109
-.pdf   38;5;109
-.php   38;5;109
-.phtml 38;5;109
-.ppt   38;5;109
-.pptx  38;5;109
-.tex   38;5;109
-.txt   38;5;109
-.xls   38;5;109
-.xlsx  38;5;109
-.xml   38;5;109
+.doc   38;5;180
+.docx  38;5;180
+.html  38;5;180
+.js    38;5;180
+.json  38;5;180
+.md    38;5;180
+.neon  38;5;180
+.odp   38;5;180
+.ods   38;5;180
+.odt   38;5;180
+.pdf   38;5;180
+.php   38;5;180
+.phtml 38;5;180
+.ppt   38;5;180
+.pptx  38;5;180
+.tex   38;5;180
+.txt   38;5;180
+.xls   38;5;180
+.xlsx  38;5;180
+.xml   38;5;180
