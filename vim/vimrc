@@ -25,8 +25,8 @@ Plug 'junegunn/goyo.vim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Plug 'morhetz/gruvbox'
-" Plug 'Lokaltog/vim-monotone'
-Plug 'huyvohcmc/atlas.vim'
+Plug 'Lokaltog/vim-monotone'
+" Plug 'huyvohcmc/atlas.vim'
 
 
 
