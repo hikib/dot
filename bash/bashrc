@@ -54,3 +54,5 @@ PROMPT_COMMAND="__ps1"
 # ----- OTHER SOURCES
 [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.cargo/env ] && source $HOME/.cargo/env # rust
+. "$HOME/.cargo/env"

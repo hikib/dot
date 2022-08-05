@@ -1,10 +1,10 @@
 # .bash_aliases
 
-
 alias \
   vrc="vim ~/.vimrc"            \
-  brc="vim ~/.bashrc"     \
-  trc="vim ~/.tmux.conf"     \
+  brc="vim ~/.bashrc"           \
+  trc="vim ~/.tmux.conf"        \
+  rg="rg -i -C 3"             \
   grep="grep -i --colour=auto"  \
   egrep="egrep -i --colour=auto"\
   fgrep="fgrep -i --colour=auto"\
@@ -13,7 +13,8 @@ alias \
   vi=vim
 
 alias \
-  repos="cd ${REPOS} && ls -A"
+  repos="cd ${REPOS} && ls -A" \
+  lab="cd ${REPOS}/lab && ls -A"
 
 alias \
   k="clear"        \
@@ -23,6 +24,6 @@ alias \
   mkd="mkdir -pv"
 
 alias \
-  dev="ssh hiko@127.0.0.1 -p 909"        \
-
+  dev="ssh hiko@127.0.0.1 -p 909" \
+  t=tmux-attach
 
