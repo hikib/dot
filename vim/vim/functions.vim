@@ -3,8 +3,8 @@ fun! TrimWhitespace()
   keeppatterns %s/\s\+$//e
   call winrestview(l:save)
 endfun
-
 au BufWritePre * :call TrimWhitespace()
+
 au CompleteDone * silent! pclose!
 
 " Ensure Goyo exits

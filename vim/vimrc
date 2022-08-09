@@ -20,6 +20,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-markdown'
+Plug 'rust-lang/rust.vim'
 Plug 'junegunn/goyo.vim'
 
 " Copied and made changes to vim-monotone

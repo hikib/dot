@@ -1,8 +1,8 @@
-" ----- VIM-GO
+" ..... VIM-GO
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_fmt_command = "gopls"
-  let g:go_doc_balloon = 0
+let g:go_doc_balloon = 0
 
 " let g:go_highlight_array_whitespace_error = 0
 " let g:go_highlight_chan_whitespace_error = 0
@@ -57,7 +57,7 @@ let g:go_highlight_debug = 1
 " let g:go_auto_type_info = 1
 " let g:go_fmt_fail_silntly = 1
 
-" ----- GENERAL
+" ..... GENERAL
 setlocal updatetime=100
 setlocal noexpandtab
 setlocal tabstop=4
