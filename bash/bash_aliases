@@ -1,29 +1,34 @@
 # .bash_aliases
 
+# ----- SHORTCUTS
 alias \
   vrc="vim ~/.vimrc"            \
   brc="vim ~/.bashrc"           \
   trc="vim ~/.tmux.conf"        \
-  rg="rg -i -C 3"             \
+  vi=vim                        \
+  k="clear"                     \
+  ?="duck"                      \
+  web="w3m ~/.w3m/bookmark.html"\
+  t=tmux-attach                 \
+  ifcpatch="python -m ifcpatch" \
+  vv="searchvault"
+
+# ----- AUTO-OPTIONS
+alias \
+  rg="rg -i -C 3"               \
   grep="grep -i --colour=auto"  \
   egrep="egrep -i --colour=auto"\
   fgrep="fgrep -i --colour=auto"\
   curl="curl -L"                \
   ls="ls -h --color=auto"       \
-  vi=vim
-
-alias \
-  repos="cd ${REPOS} && ls -A" \
-  lab="cd ${REPOS}/lab && ls -A"
-
-alias \
-  k="clear"        \
-  cp="cp -iv"      \
-  mv="mv -iv"      \
-  rm="rm -v"       \
+  cp="cp -iv"                   \
+  mv="mv -iv"                   \
+  rm="rm -v"                    \
   mkd="mkdir -pv"
 
+# ----- WORKSPACES
 alias \
-  dev="ssh hiko@127.0.0.1 -p 909" \
-  t=tmux-attach
+  repos="cd ${REPOS} && ls -A"  \
+  mome="cd ${MOME} && ls -A"  \
+  lab="cd ${REPOS}/lab && ls -A"
 

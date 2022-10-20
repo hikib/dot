@@ -1,4 +1,11 @@
+#!bash
 # .bashrc
+
+# case $- in
+# *i*) ;; #interactive
+# *( return ;;
+# esac
+
 
 # source global definitions
 [ -f /etc/bashrc ] && . /etc/bashrc
@@ -18,11 +25,14 @@ export EDITOR="$VISUAL"
 # Ignore .git directories and cache files
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
 
-# ----- PATHS
-export MOME=$HOME/mome          # Modus Operandi
+# ----- GO
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
-export REPOS=$HOME/repos/github.com/hikmet-kibar
+export CGO_ENABLED=1
+
+# ----- PATHS
+export MOME=$HOME/mome          # Modus Operandi
+export REPOS=$HOME/repos
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
@@ -50,6 +60,31 @@ __ps1(){
   PS1="$U.$H $D$B \n$S $TEXTRESET"
 }
 PROMPT_COMMAND="__ps1"
+
+# ----- FUNCTIONS
+# use functions when cd is needed
+clone ()
+{
+  # thx to rwxrob
+  local repo="$1" user;
+  local repo="${repo#https://github.com/}";
+  local repo="${repo#git@github.com:}";
+  if [[ $repo =~ / ]]; then
+      user="${repo%%/*}";
+  else
+      user="$GITUSER";
+      [[ -z "$user" ]] && user="$USER";
+  fi;
+  local name="${repo##*/}";
+  local userd="$REPOS/github.com/$user";
+  local path="$userd/$name";
+  [[ -d "$path" ]] && cd "$path" && return;
+  mkdir -p "$userd";
+  cd "$userd";
+  echo gh repo clone "$user/$name" -- --recurse-submodule;
+  gh repo clone "$user/$name" -- --recurse-submodule;
+  cd "$name"
+}
 
 # ----- OTHER SOURCES
 [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
