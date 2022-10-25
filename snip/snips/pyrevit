@@ -20,4 +20,3 @@ from pyrevit import forms, revit, DB, script
 #     print(door.get_Parameter(
 #         DB.BuiltInParameter.ALL_MODEL_FAMILY_NAME).AsString())
 
-

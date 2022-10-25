@@ -2,7 +2,7 @@
 "   finish
 " endif
 
-" START IN GOYO
+" ..... GOYO
 autocmd VimEnter * :Goyo
 
 set spelllang=en
@@ -15,8 +15,6 @@ syn sync linebreaks=1
 let b:current_syntax = "markdown"
 syntax region mdHeading start="^\s*#" end="$"
 syntax match Normal "^\*" conceal cchar=●
-
-
 
 hi mdHeading ctermfg=180
 " hi mdHeading ctermfg=255

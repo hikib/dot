@@ -1,4 +1,7 @@
 *.swp
 vim/vim/ftplugin/go/**
 vim/vim/autoload/**
+w3m/**
+!w3m/bookmark.html
+!w3m/config
 

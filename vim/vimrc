@@ -14,22 +14,15 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-markdown'
+Plug 'rust-lang/rust.vim'
 Plug 'junegunn/goyo.vim'
-" Plug 'junegunn/limelight.vim'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-" Plug 'morhetz/gruvbox'
-Plug 'Lokaltog/vim-monotone'
-" Plug 'huyvohcmc/atlas.vim'
-
-
-
+" Copied and made changes to vim-monotone
+" Plug 'Lokaltog/vim-monotone'
 call plug#end()
 
 " ----- SOURCES
