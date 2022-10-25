@@ -1,6 +1,3 @@
-#!/bin/env bash
-
+#!/usr/bin/env sh
 THISDIR=$(dirname $(readlink -f $0))
-
 ln -svf $THISDIR/tmux.conf $HOME/.tmux.conf
-
