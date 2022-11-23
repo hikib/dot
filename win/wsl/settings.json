@@ -1,0 +1,111 @@
+
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "defaultProfile": "Ubuntu",
+    "startOnUserLogin": true,
+    "launchMode": "maximized",
+    "copyOnSelect": true,
+    "disabledProfileSources": [],
+    "theme": "dark",
+
+    "tabWidthMode": "compact",
+    "alwaysShowTabs": false,
+    "showTabsInTitlebar": false,
+
+
+    "profiles":
+    {
+        "defaults":
+        {
+            // Put settings here that you want to apply to all profiles
+        },
+        "list":
+        [
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl",
+                "hidden": false,
+                //"startingDirectory": "E:\\dev-repos-my",
+                "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\neptune\\",
+                "fontFace": "Cousine",
+                "fontSize": 11,
+                "padding": "15, 9, 15, 9",
+                "cursorShape": "filledBox",
+                "colorScheme": "nord",
+
+            },
+            {
+                // Make changes here to the powershell.exe profile
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "commandline": "powershell.exe",
+                "hidden": false,
+            },
+            {
+                // Make changes here to the cmd.exe profile
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "cmd",
+                "commandline": "cmd.exe",
+                "hidden": false,
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure",
+                "hidden": true,
+            }
+        ]
+    },
+
+    // Add custom color schemes to this array
+    "schemes": [
+        {
+            "name": "SpaceDuck",
+            "foreground": "#ecf0c1",
+            "background": "#0f111b",
+            "black": "#000000",
+            "red": "#e33400",
+            "green": "#5ccc96",
+            "yellow": "#b3a1e6",
+            "blue": "#00a3cc",
+            "purple": "#f2ce00",
+            "cyan": "#7a5ccc",
+            "white": "#686f9a",
+            "brightBlack": "#686f9a",
+            "brightRed": "#e33400",
+            "brightGreen": "#5ccc96",
+            "brightYellow": "#b3a1e6",
+            "brightBlue": "#00a3cc",
+            "brightPurple": "#f2ce00",
+            "brightCyan": "#7a5ccc",
+            "brightWhite": "#f0f1ce"
+        },
+        {
+            "name": "nord",
+            // "cursorColor": "#FFFFFF",
+            // "selectionBackground": "#FFFFFF",
+            "background": "#2E3440",
+            "foreground": "#E5E9F0",
+
+            "black": "#3B4252",
+            "blue": "#81A1C1",
+            "cyan": "#88C0D0",
+            "green": "#8FBCBB",
+            "purple": "#B48EAD",
+            "red": "#BF616A",
+            "white": "#E5E9F0",
+            "yellow": "#ebcb8b",
+            "brightBlack": "#4c566a",
+            "brightRed": "#bf616a",
+            "brightGreen": "#a3be8c",
+            "brightYellow": "#ebcb8b",
+            "brightBlue": "#81a1c1",
+            "brightPurple": "#b48ead",
+            "brightCyan": "#8fbcbb",
+            "brightWhite": "#eceff4",
+
+        }
+    ],
+}
