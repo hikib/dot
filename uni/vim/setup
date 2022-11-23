@@ -11,4 +11,3 @@ ln -svf $THISDIR/vim/spell $HOME/.vim/spell
 ln -svf $THISDIR/vim/after $HOME/.vim/after
 ln -svf $THISDIR/vim/colors $HOME/.vim/colors
 ln -svf $THISDIR/vim/ftplugin $HOME/.vim/ftplugin
-
