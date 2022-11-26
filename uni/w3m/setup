@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+THISDIR=$(dirname $(readlink -f $0))
+
+ln -svf $THISDIR/bookmark.html $HOME/.w3m/bookmark.html
+ln -svf $THISDIR/config $HOME/.w3m/config
+
