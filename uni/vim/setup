@@ -12,5 +12,4 @@ ln -svf $THISDIR/vim/after $HOME/.vim/after
 ln -svf $THISDIR/vim/colors $HOME/.vim/colors
 ln -svf $THISDIR/vim/ftplugin $HOME/.vim/ftplugin
 
-# vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')
-vim -T dumb -n -i NONE -es -S <(echo -e "silent! PluginInstall\nqall")
+vim +PlugInstall +qall >/dev/null 2>&1
