@@ -1,5 +1,5 @@
 # shorthand for temp work
-function runInContainer {podman run --rm -h pluto -v ./:/home/x -it pluto}
+function runInContainer {podman run --rm -h pluto -v ./:/home/x -it hikib/pluto}
 Set-Alias -Name dev -Value runInContainer
 
 # --- SCRIPTS
