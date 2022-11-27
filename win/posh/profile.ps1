@@ -1,17 +1,8 @@
-# shorthand for temp work
-function runInContainer {podman run --rm -h pluto -v ./:/home/x -it hikib/pluto}
-Set-Alias -Name dev -Value runInContainer
-
 # --- SCRIPTS
-$env:Path += ";${env:HOMEPATH}\.local\bin}"
+$env:Path += ";${env:userprofile}\.local\bin"
 
 # --- UNIX LIKE
 # From https://github.com/mikemaccana/powershell-profile
-
-# From https://github.com/Pscx/Pscx
-function sudo(){
-	Invoke-Elevated @args
-}
 
 # Truncate homedir to ~
 function limit-HomeDirectory($Path) {
