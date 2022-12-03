@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
+THISDIR=$(dirname $(readlink -f $0))
+
 for i in vim tmux bash ; do
-  cd $i && ./setup
-  cd -
+  $THISDIR/$i/setup
 done
 
