@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+for i in vim tmux bash ; do
+  cd $i && ./setup
+  cd -
+done
+

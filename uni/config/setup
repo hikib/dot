@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-THISDIR=$(dirname $(readlink -f $0))
-
-ln -svf $THISDIR/searchweb $HOME/.config/searchweb
-ln -svf $THISDIR/pandoc $HOME/.config/pandoc
-
-
