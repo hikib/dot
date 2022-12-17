@@ -8,7 +8,7 @@ alias \
   vi=vim                        \
   k="clear"                     \
   ?="duck"                      \
-  web="w3m ~/.w3m/bookmark.html"\
+  web="w3m -B"                  \
   t=tmux-attach                 \
   ifcpatch="python -m ifcpatch" \
   vv="searchvault"
