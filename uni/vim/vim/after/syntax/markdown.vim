@@ -2,9 +2,6 @@
 "   finish
 " endif
 
-" ..... GOYO
-autocmd VimEnter * :Goyo
-
 set spelllang=en
 set nospell
 
