@@ -19,6 +19,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 " Copied and made changes to vim-monotone
 " Plug 'Lokaltog/vim-monotone'
+Plug 'lifepillar/vim-gruvbox8'
 call plug#end()
 
 " ----- SOURCES
@@ -93,4 +94,5 @@ hi! link netrwMarkFile Search
 " hi Conceal guibg=NONE
 set background=dark
 set termguicolors
-colorscheme monotone
+" colorscheme monotone
+colorscheme gruvbox8_hard
