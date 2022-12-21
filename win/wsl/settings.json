@@ -1,28 +1,34 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "actions": [],
+    "alwaysShowTabs": true,
+    "copyOnSelect": true,
+    "defaultProfile":  "Windows PowerShell",
+    "disabledProfileSources": [ "Windows.Terminal.Azure" ],
+    "launchMode": "fullscreen",
+    "showTabsInTitlebar": false,
+    "startOnUserLogin": true,
+    "tabWidthMode": "compact",
+    "theme": "dark",
+
     "profiles":
     {
         "defaults":
         {
-            "actions": [],
-            "alwaysShowTabs": true,
+            "bellStyle":"taskbar",
             "colorScheme": "gruvbox",
-            "copyOnSelect": true,
+            "cursorColor": "#E6D4A3",
+            "selectionBackground": "#E6D4A3",
             "cursorShape": "emptyBox",
-            "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-            "disabledProfileSources": [],
             "font": {
-                "face": "Roboto Mono",
+                "face": "Cascadia Code",
+                // "face": "Roboto Mono",
                 "size": 12
             },
-            "launchMode": "fullscreen",
             "opacity": 100,
             "padding": "30, 10, 30, 10",
-            "showTabsInTitlebar": false,
-            "startOnUserLogin": true,
-            "tabWidthMode": "compact",
-            "theme": "dark",
             "useAcrylic": false
         },
         "list":
@@ -50,12 +56,6 @@
                 "name": "cmd"
             },
             {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
                 "guid": "{8ab8e6f6-35c6-5b46-8419-3e1568105476}",
                 "hidden": true,
                 "name": "podman-machine-default",
@@ -67,7 +67,10 @@
     [
         {
             "name": "gruvbox",
+
             "background": "#1c1c1c",
+            "foreground": "#D4BE98",
+            
             "black": "#665C54",
             "blue": "#7DAEA3",
             "brightBlack": "#928374",
@@ -79,7 +82,6 @@
             "brightWhite": "#D4BE98",
             "brightYellow": "#D8A657",
             "cyan": "#89B482",
-            "foreground": "#D4BE98",
             "green": "#A9B665",
             "purple": "#D3869B",
             "red": "#EA6962",
