@@ -1,26 +1,14 @@
 "  ---- PLUGINS
-" prevent polyglot from overwriting markdown
-let g:polyglot_disabled = ['markdown']
-
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
+" Install vim-plug:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-" Copied and made changes to vim-monotone
-" Plug 'Lokaltog/vim-monotone'
-Plug 'lifepillar/vim-gruvbox8'
 call plug#end()
+
+" prevent polyglot from overwriting markdown
+let g:polyglot_disabled = ['markdown']
 
 " ----- SOURCES
 source ~/.vim/functions.vim " functions and autocommands
@@ -94,5 +82,10 @@ hi! link netrwMarkFile Search
 " hi Conceal guibg=NONE
 set background=dark
 set termguicolors
-" colorscheme monotone
+
+" from github.com/lifepillar/vim-gruvbox8
 colorscheme gruvbox8_hard
+
+" Copied and made changes to vim-monotone
+" github.com/Lokaltog/vim-monotone
+" colorscheme monotone
