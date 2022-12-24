@@ -1,20 +1,27 @@
-# --- TERMINAL
+# ---- ALIASES
+Set-Alias -Name k -Value clear
+
+# ---- SCRIPTS
+$env:Path += ";${env:userprofile}\.local\bin"
+
+# ---- TERMINAL
 Set-PSReadlineOption -EditMode vi
+
 function prompt {
-  # username.computername currdirectory.gitbranch $
+  # username.computername currDirectory.gitBranch $
   # hiko.nep dot.main $
+
   $realLASTEXITCODE = $LASTEXITCODE
 
+  # $currDirectory = $(Get-Item -Path $(Get-Location)).BaseName.ToLower() # current directory name only
+  $currDirectory = $($executionContext.SessionState.Path.CurrentLocation).ToString().Replace($env:userprofile, '~')
+  $hasGitBranch = $gitBranch = git branch --show-current 2> $null # assigns "git branch..." to $gitBranch
+
   Write-Host "$env:username".ToLower() -ForegroundColor Gray -NoNewline
-  Write-Host ".$env:computername ".ToLower() -ForegroundColor DarkYellow -NoNewline
-  Write-Host $(Get-Item -Path $(Get-Location)).BaseName.ToLower() -ForegroundColor Gray -NoNewline
-  if ($GITBRANCH = git branch --show-current 2> $null) {
-    Write-Host ".$GITBRANCH"  -ForegroundColor DarkYellow -NoNewline
-    # Show number of issues
-    # TOO SLOW !
-    # if ($ISSUES = gh issue list | Measure-Object -Line | Select-Object -ExpandProperty Lines 2> $null) {
-    #   Write-Host " ($ISSUES)"  -ForegroundColor Red -NoNewline
-    # }
+  Write-Host ".$env:computername".ToLower() -ForegroundColor DarkYellow -NoNewline
+  Write-Host " $currDirectory" -ForegroundColor Gray -NoNewline
+  if ($hasGitBranch) {
+    Write-Host ".$gitBranch"  -ForegroundColor DarkYellow -NoNewline
   }
   Write-Host ""
   Write-Host "$" -ForegroundColor DarkRed -NoNewline
@@ -22,9 +29,3 @@ function prompt {
   $global:LASTEXITCODE = $realLASTEXITCODE
   Return " "
 }
-
-# --- SCRIPTS
-$env:Path += ";${env:userprofile}\.local\bin"
-
-# --- ALIAS
-Set-Alias -Name k -Value clear

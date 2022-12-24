@@ -1,85 +1,89 @@
 "  ---- PLUGINS
 " Install vim-plug:
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+" prevent polyglot from overwriting markdown
+" must be before plug#begin
+let g:polyglot_disabled = ['markdown']
+
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
-" prevent polyglot from overwriting markdown
-let g:polyglot_disabled = ['markdown']
 
 " ----- SOURCES
 source ~/.vim/functions.vim " functions and autocommands
 source ~/.vim/mappings.vim
 
 " ----- SETTINGS
-syntax on
+filetype indent on
 filetype on
 filetype plugin on
-filetype indent on
-set belloff=all
+syntax on
+
 " set number
 " set relativenumber
-set nonumber
-set nocompatible
-set icon
-set showmode
-set showmatch
-set history=100
 set autowrite           " autosave when changing
-set hidden              " when switching buffers
+set belloff=all
 set cmdheight=1         " avoid HitEnter prompts
-set shortmess=aoOtIF    " avoid HitEnter prompts
-set nobackup            " more risky, but cleaner
-set noswapfile
-set nowritebackup
-set ttyfast             " faster scrolling
-set nofixendofline      " prevent silent fixing by vim
-set incsearch           " highlight search while typing
+set encoding=utf-8
+set hidden              " when switching buffers
+set history=100
 set hlsearch
+set icon
 set ignorecase
+set incsearch           " highlight search while typing
+set nobackup            " more risky, but cleaner
+set nocompatible
+set nofixendofline      " prevent silent fixing by vim
+set nonumber
+set noswapfile
+set shortmess=aoOtIF    " avoid HitEnter prompts
+set showmatch
+set showmode
+set ttyfast             " faster scrolling
 
-set path+=**
-set nofixendofline      " better ascii friendly listchars
-set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
 set foldenable
-set wrapscan
-set noruler
 set laststatus=2
-set statusline=
+set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
+set nofixendofline      " better ascii friendly listchars
+set noruler
+set path+=**
 set statusline+=%*\ %<%.60F%*                 " path, trunc to 80 length
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " filetype
 set statusline+=%*\ %l:%c%*                   " current line and column
 set statusline+=%*\ %p%%%*                    " percentage
+set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " filetype
+set statusline=
+set wrapscan
 
-set textwidth=72
-set linebreak
-set tabstop=2
-set shiftwidth=2
-set smarttab
-set smartindent
 set autoindent
 set expandtab       " replace tabs with spaces
+set linebreak
+set shiftwidth=2
+set smartindent
+set smarttab
 set softtabstop=2
-set wildmenu        " Better command search
+set tabstop=2
+set textwidth=72
 set wildignorecase
+set wildmenu        " Better command search
 
-let g:netrw_fastbrowse = 0
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " dotfiles
-let g:netrw_liststyle=3
-let g:netrw_keepdir = 0
+hi! link netrwMarkFile Search
+let g:netrw_altv = 1
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+let g:netrw_fastbrowse = 0
+let g:netrw_keepdir = 0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " dotfiles
+let g:netrw_liststyle=3
 let g:netrw_winsize = 25
-hi! link netrwMarkFile Search
 
 " ----- Colors
 
-" let base16colorspace=256  " Access colors present in 256 colorspace
 " hi Conceal guibg=NONE
+" let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
 set termguicolors
 
