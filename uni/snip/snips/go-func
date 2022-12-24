@@ -1,5 +1,0 @@
-func SomeFunc() error {
-	var err error
-
-	return nil
-}
