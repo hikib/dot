@@ -6,13 +6,13 @@ map <F10> <Esc>:setlocal spell spelllang=da<CR>
 map <F11> <Esc>:setlocal nospell<CR>
 
 " netrw
-nnoremap <leader>dd :Lexplore %:p:h<CR>
-nnoremap <Leader>da :Lexplore<CR>
+nnoremap <leader>dd :Lexplore! %:p:h<CR>
+nnoremap <Leader>da :Lexplore!<CR>
 
 " navigate buffers
 nnoremap <leader>p :bprevious<CR>
 nnoremap <leader>n :bnext<CR>
-nnoremap <leader>d :bdelete<CR>
+nnoremap <leader>b :bdelete<CR>
 
 " undo breakpoints
 inoremap , ,<C-g>u
