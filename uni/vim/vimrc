@@ -4,20 +4,20 @@
 
 " prevent polyglot from overwriting markdown
 " must be before plug#begin
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = ['markdown', 'rust', 'go']
 
 call plug#begin('~/.vim/plugged')
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 call plug#end()
 
-
-" ----- SOURCES
+" ---- SOURCES
 source ~/.vim/functions.vim " functions and autocommands
 source ~/.vim/mappings.vim
 
-" ----- SETTINGS
+" ---- SETTINGS
 filetype indent on
 filetype on
 filetype plugin on
@@ -80,15 +80,16 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " dotfiles
 let g:netrw_liststyle=3
 let g:netrw_winsize = 25
 
-" ----- Colors
+" ---- Colors
 
 " hi Conceal guibg=NONE
-" let base16colorspace=256  " Access colors present in 256 colorspace
+" Access colors present in 256 colorspace:
+" let base16colorspace=256
 set background=dark
 set termguicolors
 
-" from github.com/lifepillar/vim-gruvbox8
-colorscheme gruvbox8_hard
+" form github.com/prateektade/rosepine-vim
+colorscheme rosepine
 
 " Copied and made changes to vim-monotone
 " github.com/Lokaltog/vim-monotone
