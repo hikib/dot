@@ -1,8 +1,12 @@
 # ---- ALIASES
 Set-Alias -Name k -Value clear
+Set-Alias -Name vi -Value vim
 
 # ---- SCRIPTS
 $env:Path += ";${env:userprofile}\.local\bin"
+$env:MOME = "C:\Users\Hiko\repos\github.com\hikib\mome"
+# $env:EDITOR = "notepad++.exe"
+$env:EDITOR = "vim"
 
 # ---- TERMINAL
 Set-PSReadlineOption -EditMode vi
