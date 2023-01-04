@@ -9,6 +9,11 @@ map <F11> <Esc>:setlocal nospell<CR>
 nnoremap <leader>dd :Lexplore %:p:h<CR>
 nnoremap <Leader>da :Lexplore<CR>
 
+" navigate buffers
+nnoremap <leader>p :bprevious<CR>
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>d :bdelete<CR>
+
 " undo breakpoints
 inoremap , ,<C-g>u
 inoremap . .<C-g>u
