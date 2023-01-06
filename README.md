@@ -2,8 +2,4 @@
 This is a collection of my configuration files.
 I use it to have my personalised settings on any machine I work at.
 
-Installation instructions can be found in the `README.md` files of the
-directories.
-
 *Don't run installations without understanding the source!*
-
