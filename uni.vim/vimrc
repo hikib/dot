@@ -7,10 +7,18 @@
 let g:polyglot_disabled = ['markdown', 'rust', 'go']
 
 call plug#begin('~/.vim/plugged')
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'rust-lang/rust.vim'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
+
+" language specific
+if executable("go")
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+endif
+if executable("rustc")
+  Plug 'rust-lang/rust.vim'
+endif
+
 call plug#end()
 
 " ---- SOURCES
