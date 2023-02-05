@@ -1,6 +1,7 @@
 # ---- ALIASES
 Set-Alias -Name k -Value clear
 Set-Alias -Name vi -Value vim
+Set-Alias -Name ff -Value firefox
 
 # ---- SCRIPTS
 $env:Path += ";${env:userprofile}\.local\bin"
@@ -12,7 +13,9 @@ $env:EDITOR = "vim"
 Set-PSReadlineOption -EditMode vi
 
 function prompt {
+  # format:
   # username.computername currDirectory.gitBranch $
+  # example:
   # hiko.nep dot.main $
 
   $realLASTEXITCODE = $LASTEXITCODE
