@@ -25,20 +25,14 @@ export EDITOR="$VISUAL"
 # Ignore .git directories and cache files
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
 
-# ----- GO
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export CGO_ENABLED=1
-
 # ----- PATHS
-export MOME=$HOME/mome          # Modus Operandi
+export MOME=$HOME/mome
 export REPOS=$HOME/repos
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH=$PATH
-export PATH=$PATH:$GOBIN
 # export PATH
 
 # ----- HISTORY
@@ -61,32 +55,6 @@ __ps1(){
 }
 PROMPT_COMMAND="__ps1"
 
-# ----- FUNCTIONS
-# use functions when cd is needed
-clone ()
-{
-  # thx to rwxrob
-  local repo="$1" user;
-  local repo="${repo#https://github.com/}";
-  local repo="${repo#git@github.com:}";
-  if [[ $repo =~ / ]]; then
-      user="${repo%%/*}";
-  else
-      user="$GITUSER";
-      [[ -z "$user" ]] && user="$USER";
-  fi;
-  local name="${repo##*/}";
-  local userd="$REPOS/github.com/$user";
-  local path="$userd/$name";
-  [[ -d "$path" ]] && cd "$path" && return;
-  mkdir -p "$userd";
-  cd "$userd";
-  echo gh repo clone "$user/$name" -- --recurse-submodule;
-  gh repo clone "$user/$name" -- --recurse-submodule;
-  cd "$name"
-}
-
 # ----- OTHER SOURCES
 [ -x "$(command -v dircolors)" ] && [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
 [ -r ~/.bash_aliases ] && source ~/.bash_aliases
-[ -f ~/.cargo/env ] && source $HOME/.cargo/env # rust
