@@ -1,5 +1,14 @@
+# Set up bash on WIN
+# Requires git-bash, therefore under uni.bash
+
 $files = @("minttyrc", "bash_aliases", "dir_colors", "bashrc", "bash_profile")
 foreach ($file in $files) {
-  New-Item -ItemType SymbolicLink -Path "$home\.$file" -Target "$PSScriptRoot\$file" -Force
+  $rc = "$home\.$file"
+  if (Test-Path -LiteralPath $rc -PathType Leaf) { Remove-Item $rc }
+  New-Item -ItemType SymbolicLink `
+    -Path $rc `
+    -Target "$PSScriptRoot\$file" `
+    -Force
 }
-Read-Host -Prompt "Press Enter to exit"
+
+Read-host "Press Enter"
