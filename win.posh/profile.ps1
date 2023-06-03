@@ -11,6 +11,7 @@ $env:EDITOR = "vim"
 
 # ---- TERMINAL
 Set-PSReadlineOption -EditMode vi
+Set-Location "${env:userprofile}/repos/github.com/hikib/"
 
 function prompt {
   # format:

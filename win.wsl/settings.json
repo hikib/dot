@@ -1,7 +1,12 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [],
+    "actions": [
+        { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+j" },
+        { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
+        { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
+        { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
+    ],
     "alwaysShowTabs": true,
     "copyOnSelect": true,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
@@ -9,6 +14,8 @@
     [
         "Windows.Terminal.Azure"
     ],
+    "experimental.rendering.forceFullRepaint": true,
+    "experimental.rendering.software": false,
     "launchMode": "fullscreen",
     "profiles":
     {
@@ -21,12 +28,13 @@
             "font":
             {
                 "face": "Cascadia Code",
-                "size": 12
+                "size": 12.0
             },
             "opacity": 100,
             "padding": "30, 10, 30, 10",
             "selectionBackground": "#E6D4A3",
-            "useAcrylic": false
+            "useAcrylic": false,
+            "useAtlasEngine": true
         },
         "list":
         [
@@ -368,19 +376,9 @@
             "yellow": "#EBCB8B"
         },
         {
-            "name": "rose-pine",
-            "cursorColor": "#555169",
-            "selectionBackground": "#2A2837",
             "background": "#191724",
-            "foreground": "#E0DEF4",
             "black": "#26233A",
             "blue": "#9CCFD8",
-            "cyan": "#EBBCBA",
-            "green": "#31748F",
-            "purple": "#C4A7E7",
-            "red": "#EB6F92",
-            "white": "#E0DEF4",
-            "yellow": "#F6C177",
             "brightBlack": "#6E6A86",
             "brightBlue": "#9CCFD8",
             "brightCyan": "#EBBCBA",
@@ -388,11 +386,22 @@
             "brightPurple": "#C4A7E7",
             "brightRed": "#EB6F92",
             "brightWhite": "#E0DEF4",
-            "brightYellow": "#F6C177"
+            "brightYellow": "#F6C177",
+            "cursorColor": "#555169",
+            "cyan": "#EBBCBA",
+            "foreground": "#E0DEF4",
+            "green": "#31748F",
+            "name": "rose-pine",
+            "purple": "#C4A7E7",
+            "red": "#EB6F92",
+            "selectionBackground": "#2A2837",
+            "white": "#E0DEF4",
+            "yellow": "#F6C177"
         }
     ],
     "showTabsInTitlebar": false,
     "startOnUserLogin": true,
     "tabWidthMode": "compact",
-    "theme": "dark"
+    "theme": "dark",
+    "themes": []
 }
