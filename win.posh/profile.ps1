@@ -5,7 +5,7 @@ Set-Alias -Name ff -Value firefox
 
 # ---- SCRIPTS
 $env:Path += ";${env:userprofile}\.local\bin"
-$env:MOME = "C:\Users\Hiko\repos\github.com\hikib\mome"
+$env:MOME = "C:\Users\Hiko\repos\github.com\hikib\mome\docs"
 # $env:EDITOR = "notepad++.exe"
 $env:EDITOR = "vim"
 
