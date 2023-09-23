@@ -21,3 +21,5 @@ done
 curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
   "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 vim +PlugInstall +qall &>/dev/null
+vim +'CocInstall -sync coc-sh coc-json coc-markdownlint coc-pyright' +qall &>/dev/null
+vim +'CocUpdateSyn' +qall &>/dev/null
