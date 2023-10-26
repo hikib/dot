@@ -20,7 +20,7 @@ if [[ $TERM == screen ]]; then
 fi
 
 set -o vi
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 # Ignore .git directories and cache files
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"

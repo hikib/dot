@@ -1,13 +1,14 @@
 # ---- ALIASES
 Set-Alias -Name k -Value clear
-Set-Alias -Name vi -Value vim
+Set-Alias -Name vi -Value nvim
 Set-Alias -Name ff -Value firefox
 
 # ---- SCRIPTS
 $env:Path += ";${env:userprofile}\.local\bin"
+$env:Path += ";C:\msys64\mingw64\bin"
+$env:Path += ";C:\lua-language-server\bin"
 $env:MOME = "C:\Users\Hiko\repos\github.com\hikib\mome\docs"
-# $env:EDITOR = "notepad++.exe"
-$env:EDITOR = "vim"
+$env:EDITOR = "nvim"
 
 # ---- TERMINAL
 Set-PSReadlineOption -EditMode vi
@@ -37,3 +38,4 @@ function prompt {
   $global:LASTEXITCODE = $realLASTEXITCODE
   Return " "
 }
+

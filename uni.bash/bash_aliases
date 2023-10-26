@@ -5,7 +5,7 @@ alias \
   vrc="vim ~/.vimrc"            \
   brc="vim ~/.bashrc"           \
   trc="vim ~/.tmux.conf"        \
-  vi=vim                        \
+  vi=nvim                       \
   k="clear"                     \
   ?="duck"                      \
   web="w3m -B"                  \
