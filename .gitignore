@@ -4,4 +4,6 @@ vim/vim/autoload/**
 w3m/**
 !w3m/bookmark.html
 !w3m/config
+plugin/packer_compiled.lua
 
+uni.nvim/plugin/packer_compiled.lua
