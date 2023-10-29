@@ -2,31 +2,56 @@
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": [
-        { "command": { "action": "moveFocus", "direction": "down" }, "keys": "alt+j" },
-        { "command": { "action": "moveFocus", "direction": "left" }, "keys": "alt+h" },
-        { "command": { "action": "moveFocus", "direction": "right" }, "keys": "alt+l" },
-        { "command": { "action": "moveFocus", "direction": "up" }, "keys": "alt+k" },
+        {
+            "command": {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "keys": "alt+j"
+        },
+        {
+            "command": {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "keys": "alt+l"
+        },
+        {
+            "command": {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "keys": "alt+h"
+        },
+        {
+            "command": {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "keys": "alt+k"
+        }
     ],
     "alwaysShowTabs": true,
     "copyOnSelect": true,
     "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "disabledProfileSources":
-    [
+    "disabledProfileSources": [
         "Windows.Terminal.Azure"
     ],
     "experimental.rendering.forceFullRepaint": true,
     "experimental.rendering.software": false,
     "launchMode": "fullscreen",
-    "profiles":
-    {
-        "defaults":
+    "newTabMenu": [
         {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": {
+        "defaults": {
             "bellStyle": "taskbar",
             "colorScheme": "rose-pine",
             "cursorColor": "#E6D4A3",
-            "cursorShape": "emptyBox",
-            "font":
-            {
+            "cursorShape": "filledBox",
+            "font": {
                 "face": "Cascadia Code",
                 "size": 12.0
             },
@@ -36,47 +61,46 @@
             "useAcrylic": false,
             "useAtlasEngine": true
         },
-        "list":
-        [
+        "list": [
             {
+                "name": "Windows PowerShell",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell"
+                "hidden": false
             },
             {
+                "name": "Git-Bash",
                 "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
                 "guid": "{b539556c-35bf-42de-8bc3-23265a992c6e}",
-                "hidden": false,
-                "name": "Git-Bash"
+                "hidden": false
             },
             {
+                "name": "Ubuntu",
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
-                "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl"
             },
             {
+                "name": "cmd",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "cmd"
+                "hidden": false
             },
             {
-                "guid": "{8ab8e6f6-35c6-5b46-8419-3e1568105476}",
-                "hidden": true,
-                "name": "podman-machine-default",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
+                "name": "podman-dev",
                 "guid": "{2442bcf1-85df-5cc2-807a-e05ff273dc72}",
                 "hidden": false,
-                "name": "podman-dev",
                 "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "name": "PowerShell",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },
-    "schemes":
-    [
+    "schemes": [
         {
+            "name": "Campbell",
             "background": "#0C0C0C",
             "black": "#0C0C0C",
             "blue": "#0037DA",
@@ -92,7 +116,6 @@
             "cyan": "#3A96DD",
             "foreground": "#CCCCCC",
             "green": "#13A10E",
-            "name": "Campbell",
             "purple": "#881798",
             "red": "#C50F1F",
             "selectionBackground": "#FFFFFF",
@@ -100,6 +123,7 @@
             "yellow": "#C19C00"
         },
         {
+            "name": "Campbell Powershell",
             "background": "#012456",
             "black": "#0C0C0C",
             "blue": "#0037DA",
@@ -115,7 +139,6 @@
             "cyan": "#3A96DD",
             "foreground": "#CCCCCC",
             "green": "#13A10E",
-            "name": "Campbell Powershell",
             "purple": "#881798",
             "red": "#C50F1F",
             "selectionBackground": "#FFFFFF",
@@ -123,6 +146,7 @@
             "yellow": "#C19C00"
         },
         {
+            "name": "One Half Dark",
             "background": "#282C34",
             "black": "#282C34",
             "blue": "#61AFEF",
@@ -138,7 +162,6 @@
             "cyan": "#56B6C2",
             "foreground": "#DCDFE4",
             "green": "#98C379",
-            "name": "One Half Dark",
             "purple": "#C678DD",
             "red": "#E06C75",
             "selectionBackground": "#FFFFFF",
@@ -146,6 +169,7 @@
             "yellow": "#E5C07B"
         },
         {
+            "name": "One Half Light",
             "background": "#FAFAFA",
             "black": "#383A42",
             "blue": "#0184BC",
@@ -161,7 +185,6 @@
             "cyan": "#0997B3",
             "foreground": "#383A42",
             "green": "#50A14F",
-            "name": "One Half Light",
             "purple": "#A626A4",
             "red": "#E45649",
             "selectionBackground": "#FFFFFF",
@@ -169,6 +192,7 @@
             "yellow": "#C18301"
         },
         {
+            "name": "Solarized Dark",
             "background": "#002B36",
             "black": "#002B36",
             "blue": "#268BD2",
@@ -184,7 +208,6 @@
             "cyan": "#2AA198",
             "foreground": "#839496",
             "green": "#859900",
-            "name": "Solarized Dark",
             "purple": "#D33682",
             "red": "#DC322F",
             "selectionBackground": "#FFFFFF",
@@ -192,6 +215,7 @@
             "yellow": "#B58900"
         },
         {
+            "name": "Solarized Light",
             "background": "#FDF6E3",
             "black": "#002B36",
             "blue": "#268BD2",
@@ -207,7 +231,6 @@
             "cyan": "#2AA198",
             "foreground": "#657B83",
             "green": "#859900",
-            "name": "Solarized Light",
             "purple": "#D33682",
             "red": "#DC322F",
             "selectionBackground": "#FFFFFF",
@@ -215,6 +238,7 @@
             "yellow": "#B58900"
         },
         {
+            "name": "SpaceDuck",
             "background": "#0F111B",
             "black": "#000000",
             "blue": "#00A3CC",
@@ -230,7 +254,6 @@
             "cyan": "#7A5CCC",
             "foreground": "#ECF0C1",
             "green": "#5CCC96",
-            "name": "SpaceDuck",
             "purple": "#F2CE00",
             "red": "#E33400",
             "selectionBackground": "#FFFFFF",
@@ -238,6 +261,7 @@
             "yellow": "#B3A1E6"
         },
         {
+            "name": "Tango Dark",
             "background": "#000000",
             "black": "#000000",
             "blue": "#3465A4",
@@ -253,7 +277,6 @@
             "cyan": "#06989A",
             "foreground": "#D3D7CF",
             "green": "#4E9A06",
-            "name": "Tango Dark",
             "purple": "#75507B",
             "red": "#CC0000",
             "selectionBackground": "#FFFFFF",
@@ -261,6 +284,7 @@
             "yellow": "#C4A000"
         },
         {
+            "name": "Tango Light",
             "background": "#FFFFFF",
             "black": "#000000",
             "blue": "#3465A4",
@@ -276,7 +300,6 @@
             "cyan": "#06989A",
             "foreground": "#555753",
             "green": "#4E9A06",
-            "name": "Tango Light",
             "purple": "#75507B",
             "red": "#CC0000",
             "selectionBackground": "#FFFFFF",
@@ -284,6 +307,7 @@
             "yellow": "#C4A000"
         },
         {
+            "name": "Vintage",
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -299,7 +323,6 @@
             "cyan": "#008080",
             "foreground": "#C0C0C0",
             "green": "#008000",
-            "name": "Vintage",
             "purple": "#800080",
             "red": "#800000",
             "selectionBackground": "#FFFFFF",
@@ -307,6 +330,7 @@
             "yellow": "#808000"
         },
         {
+            "name": "atlas",
             "background": "#121212",
             "black": "#1E1E1E",
             "blue": "#377375",
@@ -322,7 +346,6 @@
             "cyan": "#578E57",
             "foreground": "#E7D4A3",
             "green": "#868715",
-            "name": "atlas",
             "purple": "#A04B73",
             "red": "#BE0F17",
             "selectionBackground": "#E6D4A3",
@@ -330,6 +353,7 @@
             "yellow": "#CC881A"
         },
         {
+            "name": "gruvbox",
             "background": "#1C1C1C",
             "black": "#665C54",
             "blue": "#7DAEA3",
@@ -345,7 +369,6 @@
             "cyan": "#89B482",
             "foreground": "#D4BE98",
             "green": "#A9B665",
-            "name": "gruvbox",
             "purple": "#D3869B",
             "red": "#EA6962",
             "selectionBackground": "#FFFFFF",
@@ -353,6 +376,7 @@
             "yellow": "#D8A657"
         },
         {
+            "name": "nord",
             "background": "#2E3440",
             "black": "#3B4252",
             "blue": "#81A1C1",
@@ -368,7 +392,6 @@
             "cyan": "#88C0D0",
             "foreground": "#E5E9F0",
             "green": "#8FBCBB",
-            "name": "nord",
             "purple": "#B48EAD",
             "red": "#BF616A",
             "selectionBackground": "#FFFFFF",
@@ -376,6 +399,7 @@
             "yellow": "#EBCB8B"
         },
         {
+            "name": "rose-pine",
             "background": "#191724",
             "black": "#26233A",
             "blue": "#9CCFD8",
@@ -391,7 +415,6 @@
             "cyan": "#EBBCBA",
             "foreground": "#E0DEF4",
             "green": "#31748F",
-            "name": "rose-pine",
             "purple": "#C4A7E7",
             "red": "#EB6F92",
             "selectionBackground": "#2A2837",

@@ -1,8 +1,8 @@
-# Settings for WSL
+# Settings for Windows Terminal
 
 ## Installation
 Run `setup.bat` as admin:
-* renames existing `settings.json` in the WSL settings directory to
+* renames existing `settings.json` in the Windows Terminal settings directory to
   `settings.json.backup`
-* Creates a symlink of `settings.json` to the WSL settings directory.
+* Creates a symlink of `settings.json` to the Windows Terminal settings directory.
 
