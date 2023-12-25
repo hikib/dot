@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-THISDIR=$(dirname $(readlink -f "$0"))
+mkdir -p "$HOME/.config/bash"
+THISDIR=$(dirname "$(readlink -f "$0")")
 DOTFILES=(
-  bash_aliases
-  bash_profile
-  bashrc
-  dir_colors
+  aliases
+  colors
   inputrc
 )
 
+ln -svf "${THISDIR}/bashrc" "${HOME}/.bashrc"
+ln -svf "${THISDIR}/profile" "${HOME}/.bash_profile"
+
 for DOTFILE in "${DOTFILES[@]}"; do
-  ln -svf "${THISDIR}/${DOTFILE}" "${HOME}/.${DOTFILE}"
+  ln -svf "${THISDIR}/${DOTFILE}" "${HOME}/.config/bash/${DOTFILE}"
 done

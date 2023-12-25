@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+
+# .bash_aliases
+
+# ----- SHORTCUTS
+alias \
+  vi=nvim                       \
+  arc="vi ~/.config/bash/aliases"            \
+  brc="vi ~/.bashrc"           \
+  trc="vi ~/.tmux.conf"        \
+  vrc="vi ~/.vimrc"            \
+  wrc="vi ~/.w3m/config"            \
+  k="clear"                     \
+  ?="duck"                      \
+  web="w3m -B"                  \
+  ifcpatch="python -m ifcpatch" \
+  vv="searchvault"
+
+# ----- AUTO-OPTIONS
+alias \
+  rg="rg -i -C 3"               \
+  grep="grep -i --colour=auto"  \
+  egrep="egrep -i --colour=auto"\
+  fgrep="fgrep -i --colour=auto"\
+  curl="curl -L"                \
+  ls="ls -h --color=auto"       \
+  cp="cp -iv"                   \
+  mv="mv -iv"                   \
+  rm="rm -v"                    \
+  mkd="mkdir -pv"
+
+# ----- WORKSPACES
+alias \
+  repos="cd ${REPOS} && ls -A"  \
+  mome="cd ${MOME} && ls -A"  \
+  lab="cd ${REPOS}/lab && ls -A"
+
