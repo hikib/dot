@@ -49,15 +49,28 @@
         "defaults": {
             "bellStyle": "taskbar",
             "colorScheme": "rose-pine",
-            "cursorColor": "#E6D4A3",
+            "background": "#1C1917",
             "cursorShape": "filledBox",
             "font": {
-                "face": "Cascadia Code",
-                "size": 12.0
+                "face": "Fira Code",
+                "size": 14,
+                "weight": "normal",
+                "features": {
+                    "cv02": 1,
+                    "cv14": 1,
+                    "cv25": 1,
+                    "cv26": 1,
+                    "cv28": 1,
+                    "cv32": 1,
+                    "ss02": 1,
+                    "ss03": 1,
+                    "ss05": 1,
+                    "ss07": 1,
+                    "ss09": 1
+                }
             },
-            "opacity": 100,
             "padding": "30, 10, 30, 10",
-            "selectionBackground": "#E6D4A3",
+            "opacity": 100,
             "useAcrylic": false,
             "useAtlasEngine": true
         },
@@ -99,6 +112,29 @@
         ]
     },
     "schemes": [
+        {
+            "name": "zenbones_dark",
+            "selectionBackground": "#3D4042",
+            "cursorColor": "#C4CACF",
+            "foreground": "#B4BDC3",
+            "background": "#1C1917",
+            "black": "#1C1917",
+            "blue": "#6099C0",
+            "cyan": "#66A5AD",
+            "green": "#819B69",
+            "purple": "#B279A7",
+            "red": "#DE6E7C",
+            "white": "#B4BDC3",
+            "yellow": "#B77E64",
+            "brightBlack": "#403833",
+            "brightBlue": "#61ABDA",
+            "brightCyan": "#65B8C1",
+            "brightGreen": "#8BAE68",
+            "brightRed": "#E8838F",
+            "brightPurple": "#CF86C1",
+            "brightWhite": "#888F94",
+            "brightYellow": "#D68C67"
+        },
         {
             "name": "Campbell",
             "background": "#0C0C0C",

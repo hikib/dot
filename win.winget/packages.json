@@ -11,20 +11,17 @@
 				{ "PackageIdentifier" : "Git.Git" },
 				{ "PackageIdentifier" : "GitHub.GitLFS" },
 				{ "PackageIdentifier" : "GitHub.cli" },
-				{ "PackageIdentifier" : "Inkscape.Inkscape" },
 				{ "PackageIdentifier" : "Microsoft.WindowsTerminal" },
 				{ "PackageIdentifier" : "Mozilla.Firefox" },
 				{ "PackageIdentifier" : "Nvidia.GeForceExperience" },
 				{ "PackageIdentifier" : "Nvidia.PhysX" },
-				{ "PackageIdentifier" : "OBSProject.OBSStudio" },
 				{ "PackageIdentifier" : "ProtonTechnologies.ProtonVPN" },
 				{ "PackageIdentifier" : "Python.Python.3.12" },
 				{ "PackageIdentifier" : "RedHat.Podman" },
-				{ "PackageIdentifier" : "Scribus.Scribus" },
 				{ "PackageIdentifier" : "Spotify.Spotify" },
 				{ "PackageIdentifier" : "SumatraPDF.SumatraPDF" },
-				{ "PackageIdentifier" : "TheDocumentFoundation.LibreOffice" },
-				{ "PackageIdentifier" : "Wacom.WacomTabletDriver" }
+				{ "PackageIdentifier" : "VideoLAN.VLC" },
+				{ "PackageIdentifier" : "nomacs.nomacs" }
 			],
 			"SourceDetails" :
 			{
