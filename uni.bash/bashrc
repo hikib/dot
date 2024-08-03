@@ -1,4 +1,4 @@
-#!bash
+#!/usr/bin/bash
 # .bashrc
 
 # case $- in
@@ -6,9 +6,8 @@
 # *( return ;;
 # esac
 
-
 # source global definitions
-[ -f /etc/bashrc ] && . /etc/bashrc
+[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc
 
 # ----- DEFAULTS
 if [[ $TERM == xterm ]]; then
@@ -26,6 +25,7 @@ export EDITOR="$VISUAL"
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
 
 # ----- PATHS
+export XDG_CONFIG_HOME=$HOME/.config
 export MOME=$HOME/mome
 export REPOS=$HOME/repos
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
@@ -45,7 +45,8 @@ export HISTFILESIZE=10000
 # ----- PROMPT
 # search for: ANSI color codes
 __ps1(){
-  local GITBRANCH="$(git branch --show-current 2>/dev/null)"
+  declare GITBRANCH
+  GITBRANCH="$(git branch --show-current 2>/dev/null)"
   test -n "$GITBRANCH" && GITBRANCH=".$GITBRANCH" # show dot
   local U="\[\e[00;38;5;255m\]\u"  # user
   local H="\[\e[00;38;5;180m\]\h"  # machine
@@ -57,7 +58,11 @@ __ps1(){
 }
 PROMPT_COMMAND="__ps1"
 
-
 # ----- OTHER SOURCES
-[ -x "$(command -v dircolors)" ] && [ -r ~/.dir_colors ] && eval $(dircolors ~/.dir_colors)
-[ -r ~/.bash_aliases ] && source ~/.bash_aliases
+[ -x "$(command -v dircolors)" ] && [ -r ~/.config/bash/colors ] && eval "$(dircolors ~/.config/bash/colors)"
+[ -r ~/.config/bash/aliases ] && . "$HOME/.config/bash/aliases"
+
+# ----- MANAGE NODE VERSION FOR NVIM/LSP/MASON
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -1,15 +1,18 @@
+#!/usr/bin/bash
+
 # .bash_aliases
 
 # ----- SHORTCUTS
 alias \
-  vrc="vim ~/.vimrc"            \
-  brc="vim ~/.bashrc"           \
-  trc="vim ~/.tmux.conf"        \
   vi=nvim                       \
+  arc="vi ~/.config/bash/aliases"            \
+  brc="vi ~/.bashrc"           \
+  trc="vi ~/.tmux.conf"        \
+  vrc="vi ~/.vimrc"            \
+  wrc="vi ~/.w3m/config"            \
   k="clear"                     \
   ?="duck"                      \
   web="w3m -B"                  \
-  t=tmux-attach                 \
   ifcpatch="python -m ifcpatch" \
   vv="searchvault"
 
