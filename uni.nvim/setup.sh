@@ -2,9 +2,9 @@
 
 THISDIR=$(dirname $(readlink -f "$0"))
 DOTFILES=(
-  after
   init.lua
   lua
+  lazy-lock.json
 )
 
 mkdir -p "${HOME}/.config/nvim"
