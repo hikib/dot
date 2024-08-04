@@ -13,4 +13,3 @@ for DOTFILE in "${DOTFILES[@]}"; do
   ln -svf "${THISDIR}/${DOTFILE}" "${HOME}/.config/nvim/${DOTFILE}"
 done
 
-nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
