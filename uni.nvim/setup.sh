@@ -12,3 +12,4 @@ for DOTFILE in "${DOTFILES[@]}"; do
   ln -svf "${THISDIR}/${DOTFILE}" "${HOME}/.config/nvim/${DOTFILE}"
 done
 
+nvim -c "TSUpdate" "MasonUpdate" "+qa"
