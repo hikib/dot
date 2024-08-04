@@ -4,7 +4,6 @@ THISDIR=$(dirname $(readlink -f "$0"))
 DOTFILES=(
   init.lua
   lua
-  lazy-lock.json
 )
 
 mkdir -p "${HOME}/.config/nvim"
