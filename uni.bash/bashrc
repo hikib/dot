@@ -60,7 +60,8 @@ PROMPT_COMMAND="__ps1"
 
 # ----- OTHER SOURCES
 [ -x "$(command -v dircolors)" ] && [ -r ~/.config/bash/colors ] && eval "$(dircolors ~/.config/bash/colors)"
-[ -r ~/.config/bash/aliases ] && . "$HOME/.config/bash/aliases"
+[ -r  "$HOME/.config/bash/aliases" ] && . "$HOME/.config/bash/aliases"
+[ -r  "$HOME/.config/bash/inputrc" ] && bind -f "$HOME/.config/bash/inputrc"
 
 # ----- MANAGE NODE VERSION FOR NVIM/LSP/MASON
 export NVM_DIR="$HOME/.config/nvm"
