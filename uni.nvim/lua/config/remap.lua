@@ -11,7 +11,7 @@ vim.keymap.set("n", "<Leader>da", ":Lexplore!<CR>")
 
 -- LSP
 vim.keymap.set("n", "<leader>f", function()
-	vim.lsp.buf.format()
+    vim.lsp.buf.format()
 end)
 
 -- navigate buffers
