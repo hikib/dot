@@ -11,6 +11,7 @@ alias                               \
   vrc="vi ~/.vimrc"                 \
   nrc="vi ~/.config/nvim/lua"       \
   wrc="vi ~/.w3m/config"            \
+  g="lazygit"                       \
   k="clear"                         \
   web="w3m -B"
 
