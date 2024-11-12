@@ -17,6 +17,14 @@ return {
             local cmp = require('cmp')
             local cmp_action = lsp_zero.cmp_action()
             cmp.setup({
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp' },
+                }, {
+                    { name = 'buffer' },
+                }),
+                experimental = {
+                    ghost_text = true
+                },
                 formatting = lsp_zero.cmp_format(),
                 mapping = cmp.mapping.preset.insert({
                     ['<C-Space>'] = cmp.mapping.complete(),
