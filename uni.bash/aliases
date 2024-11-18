@@ -34,3 +34,8 @@ alias                               \
   mome='cd ${MOME} && ls -A'        \
   lab='cd ${REPOS}/lab && ls -A'
 
+# ----- COPILOT
+alias                               \
+  ghce='gh copilot explaing'        \
+  ghcs='gh copilot suggest'         
+
