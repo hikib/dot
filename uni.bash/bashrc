@@ -29,6 +29,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export MOME=$HOME/mome
 export PROJECTS=$HOME/tmp
 export REPOS=$HOME/repos
+export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH=$PATH:/usr/local/go/bin
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
