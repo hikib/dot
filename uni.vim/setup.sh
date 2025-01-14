@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 THISDIR=$(dirname $(readlink -f "$0"))
-ln -svf "${THISDIR}/vimrc" "${HOME}/.vimrc"
+ln -svfn "${THISDIR}/vimrc" "${HOME}/.vimrc"
 
 mkdir -p "${HOME}/.vim"
 DOTFILES=(
@@ -14,7 +14,7 @@ DOTFILES=(
   spell
 )
 for DOTFILE in "${DOTFILES[@]}"; do
-  ln -svf "${THISDIR}/vim/${DOTFILE}" "${HOME}/.vim/${DOTFILE}"
+  ln -svfn "${THISDIR}/vim/${DOTFILE}" "${HOME}/.vim/${DOTFILE}"
 done
 
 # installing all plugins

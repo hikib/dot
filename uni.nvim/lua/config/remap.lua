@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader><CR>", "<silent>:noh<CR>:redraw!<CR>")
 -- map <F11> <Esc>:setlocal nospell<CR>
 
 -- netrw
-vim.keymap.set("n", "<leader>dd", ":Lexplore! %:p:h<CR>")
+-- vim.keymap.set("n", "<leader>dd", ":Lexplore! %:p:h<CR>")
 vim.keymap.set("n", "<Leader>da", ":Lexplore!<CR>")
 
 -- LSP
@@ -15,8 +15,6 @@ vim.keymap.set("n", "<leader>f", function()
 end)
 
 -- navigate buffers
-vim.keymap.set("n", "<leader>p", ":bprevious<CR>")
-vim.keymap.set("n", "<leader>n", ":bnext<CR>")
 vim.keymap.set("n", "<leader>b", ":bdelete<CR>")
 
 -- undo breakpoints
@@ -30,6 +28,9 @@ vim.keymap.set("i", "*", "<C-g>u*")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "J", "mzJ'z")
+
+-- diagnostics
+vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, {desc='Open diagnostic float'})
 
 -- yank like D or C
 vim.keymap.set("n", "Y", "yg_")

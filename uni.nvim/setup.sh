@@ -2,6 +2,7 @@
 
 THISFILE=$(readlink -f "$0")
 THISDIR=$(dirname "$THISFILE")
+
 DOTFILES=(
     init.lua
     lua
@@ -10,7 +11,7 @@ DOTFILES=(
 mkdir -p "${HOME}/.config/nvim"
 
 for DOTFILE in "${DOTFILES[@]}"; do
-    ln -svf "${THISDIR}/${DOTFILE}" "${HOME}/.config/nvim/${DOTFILE}"
+    ln -svfn "${THISDIR}/${DOTFILE}" "${HOME}/.config/nvim/${DOTFILE}"
 done
 
 nvim --headless -c "TSUpdate" "MasonUpdate" +qa

@@ -1,0 +1,6 @@
+[Nemo Action]
+Name=Move most recent download here
+Exec=downloadmover %P
+Icon-Name=down
+Selection=none
+Extensions=any;

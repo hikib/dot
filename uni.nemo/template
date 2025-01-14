@@ -1,0 +1,21 @@
+[Nemo Action]
+# Mandatory fields
+Name=Menu item label
+Exec=program_to_run or <custom-script.sh>
+Selection=s|m|any|notnone|none|42
+
+Extensions=[dir|none|nodirs|any] | pdf;ps;
+# and/or
+Mimetypes=text/plain;
+
+# Optional fields
+Comment=If you click this menu entry, %F will be acted upon!
+Icon-Name=folder-symbolic
+Separator=,
+Quote=single|double|backtick
+Dependencies=notify-send;!zenity;
+UriScheme=sftp
+Conditions=desktop;dbus <name>;gsettings foo_schema foo_boolkey;removable;exec <program>;
+Terminal=true|false
+Files=.bash*;!.bashrc;
+Locations=.*;!.config;

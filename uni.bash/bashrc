@@ -23,6 +23,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 # Ignore .git directories and cache files
 export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' -not -path '*cache*'"
+export DOWNLOADS="$HOME/Downloads"
 
 # ----- PATHS
 export XDG_CONFIG_HOME=$HOME/.config
@@ -30,8 +31,8 @@ export MOME=$HOME/mome
 export PROJECTS=$HOME/tmp
 export REPOS=$HOME/repos
 export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH=$PATH:/usr/local/go/bin
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+export PATH="$PATH:$HOME/.local/go/bin"
+if ! [[ "$PATH" =~ $HOME/.local/bin:$HOME/bin: ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
