@@ -1,3 +1,5 @@
+vim.opt.winborder = "rounded" -- use rounded borders
+
 vim.opt.autowrite = true        -- autosave when changing
 vim.opt.backup = false		-- more risky, but cleaner
 vim.opt.belloff = "all"
@@ -21,7 +23,11 @@ vim.opt.scrolloff = 8
 vim.opt.shortmess = "aoOtIF"    	-- avoid HitEnter prompts
 vim.opt.showmatch = true
 vim.opt.showmode = true
+vim.opt.signcolumn = "yes"
 vim.opt.swapfile = false
+vim.opt.termguicolors = true
+vim.opt.undofile = true
+
 
 vim.o.listchars = "space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\\|>"
 vim.o.statusline = "    %l:%c   %p%%    %<%.60F     [%{strlen(&ft)?&ft:'none'}]"
@@ -32,15 +38,16 @@ vim.opt.guicursor = ""
 vim.opt.laststatus = 2
 vim.opt.ruler = false
 vim.opt.wrapscan = true
+vim.opt.wrap = true
 
 vim.opt.autoindent = true
 vim.opt.expandtab = true    	-- replace tabs with spaces
 vim.opt.linebreak = true
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.opt.smarttab = true
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
+vim.opt.softtabstop = 2
+vim.opt.tabstop = 2
 vim.opt.textwidth = 72
 vim.opt.wildignorecase = true
 vim.opt.wildmenu = true     	-- better command search

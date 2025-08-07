@@ -20,6 +20,7 @@ vim.diagnostic.config {
             end
             if diagnostic.code then
                 message = string.format('%s[%s]', message, diagnostic.code)
+                -- message = string.format('[%s]', diagnostic.code)
             end
 
             return message .. ' '
@@ -34,7 +35,7 @@ vim.diagnostic.config {
         end,
     },
     -- Disable signs in the gutter.
-    signs = false,
+    signs = true,
 }
 
 -- Override the virtual text diagnostic handler so that the most severe diagnostic is shown first.

@@ -1,58 +1,66 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader><CR>", "<silent>:noh<CR>:redraw!<CR>")
+
+local map = vim.keymap.set
+
+map("n", "<leader><CR>", "<silent>:noh<CR>:redraw!<CR>")
+
+map("n", "<leader>o", ":update<CR> :source<CR>")
+map("n", "<leader>w", ":write<CR>")
+map("n", "<leader>q", ":quit<CR>")
+
 -- map <F8> <Esc>:setlocal spell spelllang=de<CR>
 -- map <F9> <Esc>:setlocal spell spelllang=en_gb<CR>
 -- map <F10> <Esc>:setlocal spell spelllang=da<CR>
 -- map <F11> <Esc>:setlocal nospell<CR>
 
 -- netrw
--- vim.keymap.set("n", "<leader>dd", ":Lexplore! %:p:h<CR>")
-vim.keymap.set("n", "<Leader>da", ":Lexplore!<CR>")
+-- map("n", "<leader>dd", ":Lexplore! %:p:h<CR>")
+map("n", "<leader>da", ":Lexplore!<CR>")
 
 -- LSP
-vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
+map("n", "<leader>f", function()
+  vim.lsp.buf.format()
 end)
 
 -- navigate buffers
-vim.keymap.set("n", "<leader>b", ":bdelete<CR>")
+map("n", "<leader>b", ":bdelete<CR>")
 
 -- undo breakpoints
-vim.keymap.set("i", ",", ",<C-g>u")
-vim.keymap.set("i", ".", ".<C-g>u")
-vim.keymap.set("i", "!", "!<C-g>u")
-vim.keymap.set("i", "?", "?<C-g>u")
-vim.keymap.set("i", "*", "<C-g>u*")
+map("i", ",", ",<C-g>u")
+map("i", ".", ".<C-g>u")
+map("i", "!", "!<C-g>u")
+map("i", "?", "?<C-g>u")
+map("i", "*", "<C-g>u*")
 
 -- cursor positioning
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "J", "mzJ'z")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "J", "mzJ'z")
 
 -- diagnostics
-vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float, {desc='Open diagnostic float'})
+map("n", "<leader>dd", vim.diagnostic.open_float, { desc = 'Open diagnostic float' })
 
 -- yank like D or C
-vim.keymap.set("n", "Y", "yg_")
+map("n", "Y", "yg_")
 
 -- stay in visual mode
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- better page down and page up
-vim.keymap.set("n", "<C-j>", "<C-d>")
-vim.keymap.set("n", "<C-k>", "<C-b>")
+map("n", "<C-j>", "<C-d>")
+map("n", "<C-k>", "<C-b>")
 
 -- moving lines
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("n", "<leader>k", ":m .-2<CR>==")
-vim.keymap.set("n", "<leader>j", ":m .+1<CR>==")
+map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("n", "<leader>k", ":m .-2<CR>==")
+map("n", "<leader>j", ":m .+1<CR>==")
 
 -- clipboard
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("i", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+y")
+map("n", "<leader>y", "\"+y")
+map("i", "<leader>y", "\"+y")
+map("n", "<leader>Y", "\"+y")
 
 -- reload source
-vim.keymap.set("n", "<leader>r", ":source $MYVIMRC<CR>")
+map("n", "<leader>r", ":source $MYVIMRC<CR>")
